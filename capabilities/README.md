@@ -6,15 +6,15 @@ Run `capybari capabilities` for the live list from your installed version.
 |---|---|---|---|---|---|
 | `inventory` | Repository Inventory | repository | none | n/a | capybari-core (built-in) |
 | `web-snapshot` | Website Snapshot | website | the scanned site | n/a | capybari-core (built-in) |
-| `fingerprint` | Project Fingerprint | repository | none | Operability | [capybari-analyzer-fingerprint](https://github.com/capybari/capybari-analyzer-fingerprint) |
-| `tech-detect` | Technology & Version Detector | repository | none | Technology Currency | [capybari-analyzer-tech-detect](https://github.com/capybari/capybari-analyzer-tech-detect) |
-| `dependencies` | Dependency Inventory & SBOM | repository | none | Dependency Hygiene | [capybari-analyzer-dependencies](https://github.com/capybari/capybari-analyzer-dependencies) |
-| `vulns` | Known Vulnerability Scanner | repository | `api.osv.dev` (package names + versions) | Security | [capybari-analyzer-vulns](https://github.com/capybari/capybari-analyzer-vulns) |
-| `secrets` | Secret Scanner | repository | none | Security | [capybari-analyzer-secrets](https://github.com/capybari/capybari-analyzer-secrets) |
-| `code-health` | Code Health | repository | none | Maintainability | [capybari-analyzer-code-health](https://github.com/capybari/capybari-analyzer-code-health) |
-| `architecture` | Architecture Mapper | repository | none | Structure | [capybari-analyzer-architecture](https://github.com/capybari/capybari-analyzer-architecture) |
-| `web-tech` | Website Technology Detector | website | optional: `api.osv.dev` (library names + versions) | Technology Currency | [capybari-analyzer-web-tech](https://github.com/capybari/capybari-analyzer-web-tech) |
-| `web-security` | Website Security Check | website | the scanned site only | Security | [capybari-analyzer-web-security](https://github.com/capybari/capybari-analyzer-web-security) |
-| `ai-signals` | AI-Generation Signals *(experimental)* | website, repository | none | AI Dependability | [capybari-analyzer-ai-signals](https://github.com/capybari/capybari-analyzer-ai-signals) |
+| `fingerprint` | Project Fingerprint | repository | none | Operability | [capybari-analyzer-fingerprint](https://github.com/capybari-repo/capybari-analyzer-fingerprint) |
+| `tech-detect` | Technology & Version Detector | repository | none | Technology Currency | [capybari-analyzer-tech-detect](https://github.com/capybari-repo/capybari-analyzer-tech-detect) |
+| `dependencies` | Dependency Inventory & SBOM | repository | none | Dependency Hygiene | [capybari-analyzer-dependencies](https://github.com/capybari-repo/capybari-analyzer-dependencies) |
+| `vulns` | Known Vulnerability Scanner | repository | `api.osv.dev` (package names + versions) | Security | [capybari-analyzer-vulns](https://github.com/capybari-repo/capybari-analyzer-vulns) |
+| `secrets` | Secret Scanner | repository | none | Security | [capybari-analyzer-secrets](https://github.com/capybari-repo/capybari-analyzer-secrets) |
+| `code-health` | Code Health | repository | none | Maintainability | [capybari-analyzer-code-health](https://github.com/capybari-repo/capybari-analyzer-code-health) |
+| `architecture` | Architecture Mapper | repository | none | Structure | [capybari-analyzer-architecture](https://github.com/capybari-repo/capybari-analyzer-architecture) |
+| `web-tech` | Website Technology Detector | website | optional: `api.osv.dev` (library names + versions) | Technology Currency | [capybari-analyzer-web-tech](https://github.com/capybari-repo/capybari-analyzer-web-tech) |
+| `web-security` | Website Security Check | website | the scanned site only | Security | [capybari-analyzer-web-security](https://github.com/capybari-repo/capybari-analyzer-web-security) |
+| `ai-signals` | AI-Generation Signals *(experimental)* | website, repository | none | AI Dependability | [capybari-analyzer-ai-signals](https://github.com/capybari-repo/capybari-analyzer-ai-signals) |
 
 Each capability's repository contains `docs/methodology.md`: what it detects, how, severities, and known false positives.

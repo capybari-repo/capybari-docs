@@ -2,12 +2,12 @@
 
 ## Install
 
-Download the binary for your platform from the [capybari-cli releases](https://github.com/capybari/capybari-cli/releases), or:
+Download the binary for your platform from the [capybari-cli releases](https://github.com/capybari-repo/capybari-cli/releases), or:
 
 ```bash
-brew install capybari/tap/capybari        # macOS / Linux
-go install github.com/capybari/capybari-cli/cmd/capybari@latest
-docker run --rm -v "$PWD:/src" ghcr.io/capybari/capybari analyze /src
+brew install capybari-repo/tap/capybari        # macOS / Linux
+go install github.com/capybari-repo/capybari-cli/cmd/capybari@latest
+docker run --rm -v "$PWD:/src" ghcr.io/capybari-repo/capybari analyze /src
 ```
 
 ## First scan

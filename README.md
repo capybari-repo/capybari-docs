@@ -23,13 +23,13 @@
 
 | Repository | What it is |
 |---|---|
-| [capybari-cli](https://github.com/capybari/capybari-cli) | The `capybari` tool: one binary with every capability |
-| [capybari-core](https://github.com/capybari/capybari-core) | Engine, Analyzer API, finding model, exporters |
-| [capybari-schemas](https://github.com/capybari/capybari-schemas) | JSON Schemas for findings, capabilities and reports |
+| [capybari-cli](https://github.com/capybari-repo/capybari-cli) | The `capybari` tool: one binary with every capability |
+| [capybari-core](https://github.com/capybari-repo/capybari-core) | Engine, Analyzer API, finding model, exporters |
+| [capybari-schemas](https://github.com/capybari-repo/capybari-schemas) | JSON Schemas for findings, capabilities and reports |
 | `capybari-analyzer-*` | One repository per capability |
-| [capybari-analyzer-template](https://github.com/capybari/capybari-analyzer-template) | Template for new capabilities |
-| [capybari-action](https://github.com/capybari/capybari-action) | GitHub Action |
-| [capybari-fixtures](https://github.com/capybari/capybari-fixtures) | Sample projects used by tests |
+| [capybari-analyzer-template](https://github.com/capybari-repo/capybari-analyzer-template) | Template for new capabilities |
+| [capybari-action](https://github.com/capybari-repo/capybari-action) | GitHub Action |
+| [capybari-fixtures](https://github.com/capybari-repo/capybari-fixtures) | Sample projects used by tests |
 | capybari-docs | This documentation |
 
 ## License

@@ -3,10 +3,10 @@
 ## Repository conventions
 
 - Names: `capybari-<kind>[-<name>]`, lowercase kebab-case. Analyzer repositories are `capybari-analyzer-<capability-id>`.
-- Go module path = repository path, e.g. `github.com/capybari/capybari-analyzer-secrets`.
+- Go module path = repository path, e.g. `github.com/capybari-repo/capybari-analyzer-secrets`.
 - Description: `Capybari Source Intelligence: <Capability>: <one-line purpose>`.
 - Topics: `capybari`, `source-intelligence`, plus the category.
-- Layout: see [capybari-analyzer-template](https://github.com/capybari/capybari-analyzer-template).
+- Layout: see [capybari-analyzer-template](https://github.com/capybari-repo/capybari-analyzer-template).
 
 ## Adding a capability
 

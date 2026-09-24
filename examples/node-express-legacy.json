@@ -56,7 +56,7 @@
       "capabilities": [
         "ai-signals"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#ai-signals"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#ai-signals"
     },
     {
       "id": "dependencies",
@@ -75,7 +75,7 @@
       "capabilities": [
         "dependencies"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#dependencies"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#dependencies"
     },
     {
       "id": "evolution",
@@ -94,7 +94,7 @@
       "capabilities": [
         "tech-detect"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#evolution"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#evolution"
     },
     {
       "id": "maintainability",
@@ -114,7 +114,7 @@
         "code-health",
         "fingerprint"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#maintainability"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#maintainability"
     },
     {
       "id": "operability",
@@ -133,7 +133,7 @@
       "capabilities": [
         "fingerprint"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#operability"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#operability"
     },
     {
       "id": "security",
@@ -153,7 +153,7 @@
         "secrets",
         "vulns"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#security"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#security"
     },
     {
       "id": "structure",
@@ -172,7 +172,7 @@
       "capabilities": [
         "architecture"
       ],
-      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#structure"
+      "methodology": "https://github.com/capybari-repo/capybari-docs/blob/main/methodology/scoring.md#structure"
     }
   ],
   "findings": [
