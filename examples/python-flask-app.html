@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software X-Ray: python-flask-app</title>
+<style>
+:root{--bg:#fbfaf9;--card:#ffffff;--ink:#121110;--ink2:#4c4640;--muted:#837c74;--line:#e3e0db;--accent:#0b8168;--accent-bg:#eafbf5;
+--crit:#b42318;--high:#bc591d;--med:#a16207;--low:#4f6f94;--info:#837c74;--good:#0b8168;--fair:#a16207;--poor:#b42318;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0908;--card:#171512;--ink:#f6f4f1;--ink2:#c4bdb4;--muted:#968f86;--line:#34302b;--accent:#35c09a;--accent-bg:rgba(53,192,154,.12);
+--crit:#f97066;--high:#edaa6b;--med:#facc15;--low:#8fb3dc;--info:#968f86;--good:#35c09a;--fair:#facc15;--poor:#f97066;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 InterVariable,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}a{color:var(--accent)}code,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+header .kicker{color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+h1{font-size:28px;margin:4px 0 8px;overflow-wrap:anywhere}h2{font-size:19px;margin:36px 0 12px}h3{font-size:15px;margin:0 0 6px}
+.headline{font-size:17px;color:var(--ink2);margin:0 0 12px}.meta{color:var(--muted);font-size:13px}.meta span{margin-right:14px;display:inline-block}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+a.score{display:block;text-decoration:none;color:inherit}a.score:hover{border-color:var(--accent)}
+.score .v{font-size:34px;font-weight:700;line-height:1.1}.score .n{font-weight:600}.score .s{color:var(--muted);font-size:12.5px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
+.good{color:var(--good)}.fair{color:var(--fair)}.poor{color:var(--poor)}.bg-good{background:var(--good)}.bg-fair{background:var(--fair)}.bg-poor{background:var(--poor)}
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}dl.facts dt{color:var(--muted)}dl.facts dd{margin:0;overflow-wrap:anywhere}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;font-size:13px}
+.counts span{margin-right:12px;font-weight:600}
+.sev{display:inline-block;min-width:68px;text-align:center;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff}
+.sev-critical{background:var(--crit)}.sev-high{background:var(--high)}.sev-medium{background:var(--med)}.sev-low{background:var(--low)}.sev-info{background:var(--info)}
+details.f{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:10px 14px}
+details.f summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;list-style:none}details.f summary::-webkit-details-marker{display:none}
+details.f summary .t{font-weight:600;flex:1 1 300px}details.f summary .c{color:var(--muted);font-size:12.5px}
+.body{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}.body p{margin:6px 0}.body p.desc{white-space:pre-line}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:4px 0 8px}
+.new{color:var(--accent);font-weight:700;font-size:12px}
+ol.recs{padding-left:20px}ol.recs li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.muted{color:var(--muted)}.pill{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--muted)}
+.boundary{border-left:4px solid var(--accent);background:var(--accent-bg)}
+footer{margin-top:48px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body><main>
+<header>
+<div class="kicker">Capybari Source Intelligence · Software X-Ray</div>
+<h1>python-flask-app</h1>
+<p class="headline">python-flask-app: 5 critical/high finding(s) in Security, Technology Currency. Start there.</p>
+<div class="meta"><span>repository · <code>capybari-fixtures/python-flask-app</code></span><span>2026-09-24 04:52 UTC</span><span>1.3s</span><span>online</span><span>capybari 0136b2b</span></div>
+</header>
+
+
+<h2>Scores <span class="pill">0 = worst · 100 = best</span></h2>
+<div class="grid">
+<a class="card score" href="#dim-ai-signals" title="No issues found by ai-signals.">
+<div class="n">AI Dependability</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · low confidence</div><div class="s">No issues found by ai-signals.</div></a>
+<a class="card score" href="#dim-dependencies" title="No issues found by dependencies.">
+<div class="n">Dependency Hygiene</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by dependencies.</div></a>
+<a class="card score" href="#dim-evolution" title="1 high, 1 medium finding(s) by tech-detect.">
+<div class="n">Technology Currency</div><div class="v fair">71<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-fair" style="width:71%"></i></div>
+<div class="s">fair · high confidence</div><div class="s">1 high, 1 medium finding(s) by tech-detect.</div></a>
+<a class="card score" href="#dim-maintainability" title="No issues found by code-health.">
+<div class="n">Maintainability</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by code-health.</div></a>
+<a class="card score" href="#dim-operability" title="1 low finding(s) by fingerprint.">
+<div class="n">Operability</div><div class="v good">98<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:98%"></i></div>
+<div class="s">good · high confidence</div><div class="s">1 low finding(s) by fingerprint.</div></a>
+<a class="card score" href="#dim-security" title="4 high finding(s) by secrets, vulns.">
+<div class="n">Security</div><div class="v poor">45<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-poor" style="width:45%"></i></div>
+<div class="s">poor · high confidence</div><div class="s">4 high finding(s) by secrets, vulns.</div></a>
+<a class="card score" href="#dim-structure" title="No issues found by architecture.">
+<div class="n">Structure</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by architecture.</div></a>
+
+</div>
+
+
+<h2>What is it?</h2>
+<div class="card"><dl class="facts">
+
+<dt>Project type</dt><dd>application, web-backend</dd>
+<dt>Primary language</dt><dd>Python</dd>
+<dt>Package managers</dt><dd>pip</dd>
+<dt>Runtimes</dt><dd>Python 3.7.9; </dd>
+<dt>Entry points</dt><dd><code>Dockerfile</code> </dd>
+<dt>Tests · CI · Containers</dt><dd>yes · GitHub Actions · yes</dd>
+
+<dt>Size · Fingerprint</dt><dd>tiny · <code>fp_809e3ac961efa4ae855e</code></dd>
+
+<dt>Files</dt><dd>8 files · 74 lines</dd>
+<dt>Languages</dt><dd class="chips"><span>Python 100%</span></dd>
+
+<dt>Technologies</dt><dd class="chips"><span title="language">Python 3.7.9</span><span title="web-framework">Flask 1.0</span><span title="orm">SQLAlchemy 1.3.0</span><span title="server">Gunicorn 19.9.0</span><span title="infrastructure">Docker</span><span title="templating">Jinja 2.10</span><span title="library">Requests 2.19.1</span></dd>
+<dt>Dependencies</dt><dd>5 packages from 1 manifest(s) · 5 direct</dd>
+<dt>Architecture</dt><dd>1 modules · 0 dependencies</dd>
+</dl></div>
+
+<h2>Findings</h2>
+<p class="counts"><span class="poor">0 critical</span><span style="color:var(--high)">5 high</span><span class="fair">1 medium</span><span style="color:var(--low)">1 low</span><span class="muted">0 info</span></p>
+
+
+<details class="f" id="f-CSI-8e0c688fc67408f1" open><summary><span class="sev sev-high">high</span><span class="t">Python 3.7 is end-of-life</span><span class="c" id="dim-evolution">evolution · high confidence · tech-detect</span></summary>
+<div class="body">
+<p class="desc">Python 3.7.9 (release line 3.7) reached end-of-life on 2023-06-27. It no longer receives security fixes, so known vulnerabilities in it stay unpatched.</p>
+
+
+<p><strong>Impact:</strong> Unpatched vulnerabilities and increasing incompatibility with current libraries and platforms. Security and compliance exposure that grows over time, and upgrades that get larger the longer they are postponed.</p>
+<p><strong>What to do:</strong> Upgrade Python to a supported release line (see https://endoflife.date/python) and test the application against it.</p>
+<p class="muted">Rule <code>eol-python</code> · <a href="https://endoflife.date/python" rel="noopener">https://endoflife.date/python</a></p>
+<p class="muted">False positive? If the declared version is only a minimum (e.g. &gt;=12) and production runs a newer release, update the declaration to match.</p>
+<p class="muted">ID <code>CSI-8e0c688fc67408f1</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-1787092ae47712cd" open><summary><span class="sev sev-high">high</span><span class="t">Flask 1.0 has 4 known vulnerabilities</span><span class="c" id="dim-security">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-m2qf-hxjv-5gpq (high, CVSS 7.5) CVE-2023-30861, PYSEC-2023-62: Flask vulnerable to possible disclosure of permanent session cookie due to missing Vary: Cookie header
+- PYSEC-2026-2151 (medium, CVSS 4.3) CVE-2026-27205, GHSA-68rp-wp8r-4726: Flask is a web server gateway interface (WSGI) web application framework
+- PYSEC-2023-62 (medium) CVE-2023-30861, GHSA-m2qf-hxjv-5gpq: Flask is a lightweight WSGI web application framework
+- GHSA-68rp-wp8r-4726 (low) CVE-2026-27205, PYSEC-2026-2151: Flask session does not add `Vary: Cookie` header when accessed in some ways</p>
+<p><code>requirements.txt</code> — resolves Flask 1.0</p>
+
+
+<p><strong>What to do:</strong> Upgrade Flask to 3.1.3 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-m2qf-hxjv-5gpq</code> · <a href="https://osv.dev/vulnerability/GHSA-m2qf-hxjv-5gpq" rel="noopener">https://osv.dev/vulnerability/GHSA-m2qf-hxjv-5gpq</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-2151" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-2151</a> · <a href="https://osv.dev/vulnerability/PYSEC-2023-62" rel="noopener">https://osv.dev/vulnerability/PYSEC-2023-62</a> · <a href="https://osv.dev/vulnerability/GHSA-68rp-wp8r-4726" rel="noopener">https://osv.dev/vulnerability/GHSA-68rp-wp8r-4726</a> · <a href="https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq" rel="noopener">https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-1787092ae47712cd</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-7ff2dc03c950e621" open><summary><span class="sev sev-high">high</span><span class="t">Jinja2 2.10 has 12 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-462w-v97r-4m45 (high, CVSS 8.6) CVE-2019-10906, PYSEC-2019-217: Jinja2 sandbox escape via string formatting
+- GHSA-q2x7-8rv6-6q7h (high, CVSS 7.8) CVE-2024-56326, PYSEC-2026-1475: Jinja has a sandbox breakout through indirect reference to format method
+- PYSEC-2026-1475 (high, CVSS 7.8) CVE-2024-56326, GHSA-q2x7-8rv6-6q7h: Jinja has a sandbox breakout through indirect reference to format method
+- GHSA-h5c8-rqwp-cp95 (medium, CVSS 5.4) CVE-2024-22195, PYSEC-2026-1473: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter
+- GHSA-h75v-3vvj-5mfj (medium, CVSS 5.4) CVE-2024-34064, PYSEC-2026-1474: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter
+- PYSEC-2026-1473 (medium, CVSS 5.4) CVE-2024-22195, GHSA-h5c8-rqwp-cp95: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter
+- PYSEC-2026-1474 (medium, CVSS 5.4) CVE-2024-34064, GHSA-h75v-3vvj-5mfj: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter
+- GHSA-g3rq-g295-4j3m (medium, CVSS 5.3) CVE-2020-28493, PYSEC-2021-66: Regular Expression Denial of Service (ReDoS) in Jinja2
+- GHSA-cpwx-vrp4-4pq7 (medium) CVE-2025-27516, PYSEC-2026-1471: Jinja2 vulnerable to sandbox breakout through attr filter selecting format method
+- PYSEC-2019-217 (medium) CVE-2019-10906, GHSA-462w-v97r-4m45: In Pallets Jinja before 2
+- PYSEC-2021-66 (medium) CVE-2020-28493, GHSA-g3rq-g295-4j3m: This affects the package jinja2 from 0
+- PYSEC-2026-1471 (medium) CVE-2025-27516, GHSA-cpwx-vrp4-4pq7: Jinja2 vulnerable to sandbox breakout through attr filter selecting format method</p>
+<p><code>requirements.txt</code> — resolves Jinja2 2.10</p>
+
+
+<p><strong>What to do:</strong> Upgrade Jinja2 to 3.1.6 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-462w-v97r-4m45</code> · <a href="https://osv.dev/vulnerability/GHSA-462w-v97r-4m45" rel="noopener">https://osv.dev/vulnerability/GHSA-462w-v97r-4m45</a> · <a href="https://osv.dev/vulnerability/GHSA-q2x7-8rv6-6q7h" rel="noopener">https://osv.dev/vulnerability/GHSA-q2x7-8rv6-6q7h</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-1475" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-1475</a> · <a href="https://osv.dev/vulnerability/GHSA-h5c8-rqwp-cp95" rel="noopener">https://osv.dev/vulnerability/GHSA-h5c8-rqwp-cp95</a> · <a href="https://osv.dev/vulnerability/GHSA-h75v-3vvj-5mfj" rel="noopener">https://osv.dev/vulnerability/GHSA-h75v-3vvj-5mfj</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-10906" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2019-10906</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-7ff2dc03c950e621</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-33aa7a68f93efde4"><summary><span class="sev sev-high">high</span><span class="t">gunicorn 19.9.0 has 4 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-w3h3-4rj7-4ph4 (high, CVSS 8.2) CVE-2024-1135, PYSEC-2026-1434: Request smuggling leading to endpoint restriction bypass in Gunicorn
+- PYSEC-2026-1434 (high, CVSS 8.2) CVE-2024-1135, GHSA-w3h3-4rj7-4ph4: Request smuggling leading to endpoint restriction bypass in Gunicorn
+- GHSA-hc5x-x2vx-497g (high, CVSS 7.5) CVE-2024-6827, PYSEC-2026-1433: Gunicorn HTTP Request/Response Smuggling vulnerability
+- PYSEC-2026-1433 (high, CVSS 7.5) CVE-2024-6827, GHSA-hc5x-x2vx-497g: Gunicorn HTTP Request/Response Smuggling vulnerability</p>
+<p><code>requirements.txt</code> — resolves gunicorn 19.9.0</p>
+
+
+<p><strong>What to do:</strong> Upgrade gunicorn to 22.0.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-w3h3-4rj7-4ph4</code> · <a href="https://osv.dev/vulnerability/GHSA-w3h3-4rj7-4ph4" rel="noopener">https://osv.dev/vulnerability/GHSA-w3h3-4rj7-4ph4</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-1434" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-1434</a> · <a href="https://osv.dev/vulnerability/GHSA-hc5x-x2vx-497g" rel="noopener">https://osv.dev/vulnerability/GHSA-hc5x-x2vx-497g</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-1433" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-1433</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-1135" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2024-1135</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-33aa7a68f93efde4</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-7259406d26fd5882"><summary><span class="sev sev-high">high</span><span class="t">requests 2.19.1 has 10 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-x84v-xcm2-53pg (high, CVSS 7.5) CVE-2018-18074, PYSEC-2018-28: Insufficiently Protected Credentials in Requests
+- GHSA-j8r2-6x86-q33q (medium, CVSS 6.1) CVE-2023-32681, PYSEC-2023-74: Unintended leak of Proxy-Authorization header in requests
+- GHSA-9wx4-h78v-vm56 (medium, CVSS 5.6) CVE-2024-35195, PYSEC-2026-1873: Requests `Session` object does not verify requests after making first request with verify=False
+- PYSEC-2026-1873 (medium, CVSS 5.6) CVE-2024-35195, GHSA-9wx4-h78v-vm56: Requests `Session` object does not verify requests after making first request with verify=False
+- PYSEC-2026-2275 (medium, CVSS 5.5) CVE-2026-25645, GHSA-gc5v-m9x4-r6x2: Requests is a HTTP library
+- GHSA-9hjg-9r4m-mvj7 (medium, CVSS 5.3) CVE-2024-47081, PYSEC-2026-1872: Requests vulnerable to .netrc credentials leak via malicious URLs
+- PYSEC-2026-1872 (medium, CVSS 5.3) CVE-2024-47081, GHSA-9hjg-9r4m-mvj7: Requests vulnerable to .netrc credentials leak via malicious URLs
+- GHSA-gc5v-m9x4-r6x2 (medium, CVSS 4.4) CVE-2026-25645, PYSEC-2026-2275: Requests has Insecure Temp File Reuse in its extract_zipped_paths() utility function
+- PYSEC-2018-28 (medium) CVE-2018-18074, GHSA-x84v-xcm2-53pg: The Requests package before 2
+- PYSEC-2023-74 (medium) CVE-2023-32681, GHSA-j8r2-6x86-q33q: Requests is a HTTP library</p>
+<p><code>requirements.txt</code> — resolves requests 2.19.1</p>
+
+
+<p><strong>What to do:</strong> Upgrade requests to 2.33.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-x84v-xcm2-53pg</code> · <a href="https://osv.dev/vulnerability/GHSA-x84v-xcm2-53pg" rel="noopener">https://osv.dev/vulnerability/GHSA-x84v-xcm2-53pg</a> · <a href="https://osv.dev/vulnerability/GHSA-j8r2-6x86-q33q" rel="noopener">https://osv.dev/vulnerability/GHSA-j8r2-6x86-q33q</a> · <a href="https://osv.dev/vulnerability/GHSA-9wx4-h78v-vm56" rel="noopener">https://osv.dev/vulnerability/GHSA-9wx4-h78v-vm56</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-1873" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-1873</a> · <a href="https://osv.dev/vulnerability/PYSEC-2026-2275" rel="noopener">https://osv.dev/vulnerability/PYSEC-2026-2275</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-18074" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2018-18074</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-7259406d26fd5882</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-d6b5d77d59b75c5f"><summary><span class="sev sev-medium">medium</span><span class="t">Flask 1.0 is end-of-life</span><span class="c">evolution · high confidence · tech-detect</span></summary>
+<div class="body">
+<p class="desc">Flask 1.0 (release line 1.0) is no longer supported by its maintainers. It no longer receives security fixes, so known vulnerabilities in it stay unpatched. Pallets supports only the latest feature release.</p>
+<p><code>requirements.txt</code> — declares Flask 1.0</p>
+
+<p><strong>Impact:</strong> Unpatched vulnerabilities and increasing incompatibility with current libraries and platforms. Security and compliance exposure that grows over time, and upgrades that get larger the longer they are postponed.</p>
+<p><strong>What to do:</strong> Upgrade Flask to a supported release line (see https://flask.palletsprojects.com/en/stable/changes/) and test the application against it.</p>
+<p class="muted">Rule <code>eol-flask</code> · <a href="https://flask.palletsprojects.com/en/stable/changes/" rel="noopener">https://flask.palletsprojects.com/en/stable/changes/</a></p>
+<p class="muted">False positive? If the declared version is only a minimum (e.g. &gt;=12) and production runs a newer release, update the declaration to match.</p>
+<p class="muted">ID <code>CSI-d6b5d77d59b75c5f</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-e4020edf7aba62cb"><summary><span class="sev sev-low">low</span><span class="t">No README</span><span class="c" id="dim-operability">operability · high confidence · fingerprint</span></summary>
+<div class="body">
+<p class="desc">There is no README explaining what the project is, how to build it and how to run it.</p>
+
+
+
+<p><strong>What to do:</strong> Add a README with purpose, setup, build, test and deployment instructions.</p>
+<p class="muted">Rule <code>no-readme</code></p>
+
+<p class="muted">ID <code>CSI-e4020edf7aba62cb</code></p>
+</div></details>
+
+
+
+<h2>What else can we tell you?</h2>
+<div class="card"><ol class="recs"><li><strong>Add the deployed URL</strong>: The repository shows the code. The deployed URL adds external exposure, TLS and security-header checks of what users actually reach.</li></ol></div>
+
+
+<h2>Capabilities</h2>
+<div class="tablewrap"><table><thead><tr><th>Capability</th><th>Status</th><th>Findings</th><th>Time</th><th>Network</th><th>Notes</th></tr></thead><tbody>
+<tr><td>AI-Generation Signals <span class="pill">experimental</span><br><code class="muted">ai-signals@0.1.0</code></td><td>ok</td><td>0</td><td>0ms</td><td>none</td><td>0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s)</td></tr>
+<tr><td>Architecture Mapper<br><code class="muted">architecture@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>1 modules, 0 internal dependencies, 0 cycle(s), 0 external packages</td></tr>
+<tr><td>Code Health<br><code class="muted">code-health@0.1.0</code></td><td>ok</td><td>0</td><td>3ms</td><td>none</td><td>4 functions in 3 files; avg complexity 2.5, max 6; 0.0% duplicated; 0 hotspot(s)</td></tr>
+<tr><td>Dependency Inventory &amp; SBOM<br><code class="muted">dependencies@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>5 packages (5 direct) from 1 manifest(s): PyPI 5<br><span class="muted">engine: OSV-SCALIBR (Apache-2.0)</span></td></tr>
+<tr><td>Project Fingerprint<br><code class="muted">fingerprint@0.1.0</code></td><td>ok</td><td>1</td><td>2ms</td><td>none</td><td>application/web-backend project in Python on Python 3.7.9</td></tr>
+<tr><td>Repository Inventory<br><code class="muted">inventory@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>8 files, 74 lines, 1 languages (listed via walk)</td></tr>
+<tr><td>Secret Scanner<br><code class="muted">secrets@0.1.0</code></td><td>ok</td><td>0</td><td>304ms</td><td>none</td><td>0 potential secret(s) in 8 scanned files<br><span class="muted">engine: Gitleaks (MIT)</span></td></tr>
+<tr><td>Technology &amp; Version Detector<br><code class="muted">tech-detect@0.1.0</code></td><td>ok</td><td>2</td><td>0ms</td><td>none</td><td>7 technologies detected: Flask, SQLAlchemy, Gunicorn, Docker, Jinja, Requests</td></tr>
+<tr><td>Known Vulnerability Scanner<br><code class="muted">vulns@0.1.0</code></td><td>ok</td><td>4</td><td>1038ms</td><td>required</td><td>4 of 5 versioned packages have known vulnerabilities (30 advisories)<br><span class="muted">engine: OSV.dev (Apache-2.0 (service); advisory data CC-BY-4.0 and per-source licenses)</span></td></tr>
+</tbody></table></div>
+
+<h2>Data boundary</h2>
+<div class="card boundary"><p>Network requests were made to api.osv.dev by vulns. Source files were not uploaded; each disclosure states exactly what was sent.</p>
+<p><code>vulns</code> → GET api.osv.dev ×30</p><p><code>vulns</code> → POST api.osv.dev ×1</p>
+<p><strong>vulns:</strong> Sends package names, ecosystems and versions (never source code, file contents or paths) to api.osv.dev, the open vulnerability database operated by Google&#39;s Open Source Security Team.</p></div>
+
+<h2>Limitations</h2><ul><li>AI-Generation Signals: Experimental heuristics. These are indicators of unreviewed AI-generated output, not proof of AI use, and not a measure of quality on their own.</li><li>Architecture Mapper: Dependencies are derived from static import statements; dynamic imports, dependency injection and reflection are not visible.</li><li>Code Health: Function metrics for Python use lexical heuristics, not a full parser; small deviations from compiler-accurate values are expected.</li><li>Code Health: No git history available, so change hotspots could not be computed.</li><li>Repository Inventory: No git metadata was available, so .gitignore rules were not applied; built-in exclusions were used instead.</li><li>Secret Scanner: Only the current working tree was scanned. Secrets removed in earlier commits remain in git history and are not reported here.</li><li>Secret Scanner: Secrets were not verified against provider APIs, so some may be revoked, test or example values.</li><li>Technology &amp; Version Detector: End-of-life data is bundled (as of 2026-09-23) so detection works offline; newer releases or policy changes after that date are not reflected.</li><li>Known Vulnerability Scanner: Only dependencies with exact versions (from lockfiles) can be matched. Declared ranges without a lockfile are not checked.</li><li>Automated analysis reports what its analyzers can detect. It does not certify software as secure or defect-free.</li></ul>
+
+<footer>Generated by capybari 0136b2b · scan <code>scn_f77c32354113c16f</code> · Report schema 0.1 · Evidence before opinion: every finding lists its source, confidence and location.</footer>
+</main></body></html>

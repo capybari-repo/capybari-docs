@@ -1,0 +1,1146 @@
+{
+  "schema_version": "0.1",
+  "tool": {
+    "name": "capybari",
+    "version": "0136b2b",
+    "commit": "0136b2b"
+  },
+  "scan": {
+    "id": "scn_409143bf6f59dbab",
+    "target": {
+      "kind": "repository",
+      "input": "capybari-fixtures/node-express-legacy",
+      "display": "node-express-legacy"
+    },
+    "started_at": "2026-09-24T04:52:03.049835529Z",
+    "finished_at": "2026-09-24T04:52:04.819344273Z",
+    "duration_ms": 1769,
+    "mode": {
+      "offline": false,
+      "active": false,
+      "hosted": false
+    }
+  },
+  "summary": {
+    "headline": "node-express-legacy: 6 critical/high finding(s) in Security, Technology Currency. Start there.",
+    "counts": {
+      "critical": 0,
+      "high": 6,
+      "info": 0,
+      "low": 3,
+      "medium": 2
+    },
+    "top_findings": [
+      "CSI-72e5af041d061823",
+      "CSI-415b080a05e77b70",
+      "CSI-fa93ef4fb80056c2",
+      "CSI-9fb8137425ae67da",
+      "CSI-44d1d702ae6a3e6a"
+    ]
+  },
+  "scores": [
+    {
+      "id": "ai-signals",
+      "name": "AI Dependability",
+      "value": 100,
+      "rating": "good",
+      "confidence": "low",
+      "summary": "No issues found by ai-signals.",
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 0,
+        "medium": 0
+      },
+      "capabilities": [
+        "ai-signals"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#ai-signals"
+    },
+    {
+      "id": "dependencies",
+      "name": "Dependency Hygiene",
+      "value": 100,
+      "rating": "good",
+      "confidence": "high",
+      "summary": "No issues found by dependencies.",
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 0,
+        "medium": 0
+      },
+      "capabilities": [
+        "dependencies"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#dependencies"
+    },
+    {
+      "id": "evolution",
+      "name": "Technology Currency",
+      "value": 75,
+      "rating": "fair",
+      "confidence": "high",
+      "summary": "1 high, 1 low finding(s) by tech-detect.",
+      "counts": {
+        "critical": 0,
+        "high": 1,
+        "info": 0,
+        "low": 1,
+        "medium": 0
+      },
+      "capabilities": [
+        "tech-detect"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#evolution"
+    },
+    {
+      "id": "maintainability",
+      "name": "Maintainability",
+      "value": 91,
+      "rating": "good",
+      "confidence": "high",
+      "summary": "1 medium finding(s) by code-health, fingerprint.",
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 0,
+        "medium": 1
+      },
+      "capabilities": [
+        "code-health",
+        "fingerprint"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#maintainability"
+    },
+    {
+      "id": "operability",
+      "name": "Operability",
+      "value": 98,
+      "rating": "good",
+      "confidence": "high",
+      "summary": "1 low finding(s) by fingerprint.",
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 1,
+        "medium": 0
+      },
+      "capabilities": [
+        "fingerprint"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#operability"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "value": 38,
+      "rating": "poor",
+      "confidence": "high",
+      "summary": "5 high, 1 medium finding(s) by secrets, vulns.",
+      "counts": {
+        "critical": 0,
+        "high": 5,
+        "info": 0,
+        "low": 0,
+        "medium": 1
+      },
+      "capabilities": [
+        "secrets",
+        "vulns"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#security"
+    },
+    {
+      "id": "structure",
+      "name": "Structure",
+      "value": 98,
+      "rating": "good",
+      "confidence": "high",
+      "summary": "1 low finding(s) by architecture.",
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 1,
+        "medium": 0
+      },
+      "capabilities": [
+        "architecture"
+      ],
+      "methodology": "https://github.com/capybari/capybari-docs/blob/main/methodology/scoring.md#structure"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CSI-72e5af041d061823",
+      "dimension": "evolution",
+      "category": "end-of-life",
+      "title": "Node.js 12 is end-of-life",
+      "description": "Node.js 12.22.0 (release line 12) reached end-of-life on 2022-04-30. It no longer receives security fixes, so known vulnerabilities in it stay unpatched.",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": ".nvmrc",
+          "detail": "declares Node.js 12.22.0"
+        }
+      ],
+      "source": {
+        "capability": "tech-detect",
+        "version": "0.1.0"
+      },
+      "rule": {
+        "id": "eol-node.js",
+        "references": [
+          "https://endoflife.date/nodejs"
+        ]
+      },
+      "component": "Node.js",
+      "impact": {
+        "technical": "Unpatched vulnerabilities and increasing incompatibility with current libraries and platforms.",
+        "business": "Security and compliance exposure that grows over time, and upgrades that get larger the longer they are postponed."
+      },
+      "remediation": {
+        "summary": "Upgrade Node.js to a supported release line (see https://endoflife.date/nodejs) and test the application against it.",
+        "automatable": false
+      },
+      "false_positive_guidance": "If the declared version is only a minimum (e.g. >=12) and production runs a newer release, update the declaration to match.",
+      "detected_at": "2026-09-24T04:52:03.582261611Z"
+    },
+    {
+      "id": "CSI-415b080a05e77b70",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "body-parser 1.18.2 has 2 known vulnerabilities",
+      "description": "Transitive dependency. - GHSA-qwcr-r2fm-qrc7 (high, CVSS 7.5) CVE-2024-45590: body-parser vulnerable to denial of service when url encoding is enabled\n- GHSA-v422-hmwv-36x6 (low, CVSS 3.7) CVE-2026-12590: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves body-parser 1.18.2"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-qwcr-r2fm-qrc7",
+        "name": "body-parser vulnerable to denial of service when url encoding is enabled",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-qwcr-r2fm-qrc7",
+          "https://osv.dev/vulnerability/GHSA-v422-hmwv-36x6",
+          "https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7"
+        ]
+      },
+      "component": "body-parser@1.18.2",
+      "related": [
+        "GHSA-qwcr-r2fm-qrc7",
+        "GHSA-v422-hmwv-36x6"
+      ],
+      "remediation": {
+        "summary": "Upgrade body-parser to 1.20.6 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-fa93ef4fb80056c2",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "jsonwebtoken 8.5.1 has 3 known vulnerabilities",
+      "description": "- GHSA-8cf7-32gw-wr33 (high, CVSS 8.1) CVE-2022-23539: jsonwebtoken unrestricted key type could lead to legacy keys usage \n- GHSA-qwph-4952-7xr6 (medium, CVSS 6.4) CVE-2022-23540: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()\n- GHSA-hjrf-2m68-5959 (medium, CVSS 5.0) CVE-2022-23541: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves jsonwebtoken 8.5.1"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-8cf7-32gw-wr33",
+        "name": "jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-8cf7-32gw-wr33",
+          "https://osv.dev/vulnerability/GHSA-qwph-4952-7xr6",
+          "https://osv.dev/vulnerability/GHSA-hjrf-2m68-5959",
+          "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33"
+        ]
+      },
+      "component": "jsonwebtoken@8.5.1",
+      "related": [
+        "GHSA-8cf7-32gw-wr33",
+        "GHSA-qwph-4952-7xr6",
+        "GHSA-hjrf-2m68-5959"
+      ],
+      "remediation": {
+        "summary": "Upgrade jsonwebtoken to 9.0.0 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-9fb8137425ae67da",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "lodash 4.17.15 has 6 known vulnerabilities",
+      "description": "- GHSA-r5fr-rjxr-66jc (high, CVSS 8.1) CVE-2021-23337, CVE-2026-4800: lodash vulnerable to Code Injection via `_.template` imports key names\n- GHSA-p6mc-m468-83gw (high, CVSS 7.4) CVE-2020-8203: Prototype Pollution in lodash\n- GHSA-35jh-r3h4-6jhm (high, CVSS 7.2) CVE-2021-23337, CVE-2026-4800: Command Injection in lodash\n- GHSA-f23m-r3pf-42rh (medium, CVSS 6.5) CVE-2025-13465, CVE-2026-2950: lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`\n- GHSA-xxjr-mmjv-4gpg (medium, CVSS 6.5) CVE-2025-13465, CVE-2026-2950: Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions\n- GHSA-29mw-wpgm-hmr9 (medium, CVSS 5.3) CVE-2020-28500: Regular Expression Denial of Service (ReDoS) in lodash",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves lodash 4.17.15"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-r5fr-rjxr-66jc",
+        "name": "lodash vulnerable to Code Injection via `_.template` imports key names",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc",
+          "https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw",
+          "https://osv.dev/vulnerability/GHSA-35jh-r3h4-6jhm",
+          "https://osv.dev/vulnerability/GHSA-f23m-r3pf-42rh",
+          "https://osv.dev/vulnerability/GHSA-xxjr-mmjv-4gpg",
+          "https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc"
+        ]
+      },
+      "component": "lodash@4.17.15",
+      "related": [
+        "GHSA-r5fr-rjxr-66jc",
+        "GHSA-p6mc-m468-83gw",
+        "GHSA-35jh-r3h4-6jhm",
+        "GHSA-f23m-r3pf-42rh",
+        "GHSA-xxjr-mmjv-4gpg",
+        "GHSA-29mw-wpgm-hmr9"
+      ],
+      "remediation": {
+        "summary": "Upgrade lodash to 4.18.0 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-44d1d702ae6a3e6a",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "moment 2.29.1 has 2 known vulnerabilities",
+      "description": "- GHSA-8hfj-j24r-96c4 (high, CVSS 7.5) CVE-2022-24785: Path Traversal: 'dir/../../filename' in moment.locale\n- GHSA-wc69-rhjr-hc9g (high, CVSS 7.5) CVE-2022-31129: Moment.js vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves moment 2.29.1"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-8hfj-j24r-96c4",
+        "name": "Path Traversal: 'dir/../../filename' in moment.locale",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-8hfj-j24r-96c4",
+          "https://osv.dev/vulnerability/GHSA-wc69-rhjr-hc9g",
+          "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4"
+        ]
+      },
+      "component": "moment@2.29.1",
+      "related": [
+        "GHSA-8hfj-j24r-96c4",
+        "GHSA-wc69-rhjr-hc9g"
+      ],
+      "remediation": {
+        "summary": "Upgrade moment to 2.29.4 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-e50428299df93fd0",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "qs 6.5.1 has 3 known vulnerabilities",
+      "description": "Transitive dependency. - GHSA-hrpp-h998-j3pp (high, CVSS 7.5) CVE-2022-24999: qs vulnerable to Prototype Pollution\n- GHSA-4mjr-xmp4-gh2g (medium, CVSS 5.3) CVE-2026-82417: qs: Denial of Service via Attacker Controlled isBuffer\n- GHSA-6rw7-vpxm-498p (low, CVSS 3.7) CVE-2025-15284: qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves qs 6.5.1"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-hrpp-h998-j3pp",
+        "name": "qs vulnerable to Prototype Pollution",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-hrpp-h998-j3pp",
+          "https://osv.dev/vulnerability/GHSA-4mjr-xmp4-gh2g",
+          "https://osv.dev/vulnerability/GHSA-6rw7-vpxm-498p",
+          "https://nvd.nist.gov/vuln/detail/CVE-2022-24999"
+        ]
+      },
+      "component": "qs@6.5.1",
+      "related": [
+        "GHSA-hrpp-h998-j3pp",
+        "GHSA-4mjr-xmp4-gh2g",
+        "GHSA-6rw7-vpxm-498p"
+      ],
+      "remediation": {
+        "summary": "Upgrade qs to 6.16.0 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-6b33a192b168d9e6",
+      "dimension": "maintainability",
+      "category": "missing-tests",
+      "title": "No automated tests found",
+      "description": "5 source files and no test files were found. Changes cannot be verified automatically, so every modification carries regression risk.",
+      "severity": "medium",
+      "confidence": "high",
+      "source": {
+        "capability": "fingerprint",
+        "version": "0.1.0"
+      },
+      "rule": {
+        "id": "no-tests"
+      },
+      "impact": {
+        "technical": "Regressions are found by users, not by CI.",
+        "business": "Each change is slower and riskier to ship."
+      },
+      "remediation": {
+        "summary": "Start with tests around the most-changed and most business-critical code paths, and run them in CI.",
+        "automatable": false
+      },
+      "false_positive_guidance": "Tests stored outside the repository, or named without common test conventions, are not detected.",
+      "detected_at": "2026-09-24T04:52:03.052533966Z"
+    },
+    {
+      "id": "CSI-c27328c722edc5d4",
+      "dimension": "security",
+      "category": "vulnerability",
+      "title": "express 4.16.0 has 2 known vulnerabilities",
+      "description": "- GHSA-rv95-896h-c2vc (medium, CVSS 6.1) CVE-2024-29041: Express.js Open Redirect in malformed URLs\n- GHSA-qw6h-vgh9-j6wx (medium, CVSS 5.0) CVE-2024-43796: express vulnerable to XSS via response.redirect()",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "detail": "resolves express 4.16.0"
+        }
+      ],
+      "source": {
+        "capability": "vulns",
+        "version": "0.1.0",
+        "engine": "OSV.dev"
+      },
+      "rule": {
+        "id": "GHSA-rv95-896h-c2vc",
+        "name": "Express.js Open Redirect in malformed URLs",
+        "references": [
+          "https://osv.dev/vulnerability/GHSA-rv95-896h-c2vc",
+          "https://osv.dev/vulnerability/GHSA-qw6h-vgh9-j6wx",
+          "https://github.com/expressjs/express/security/advisories/GHSA-rv95-896h-c2vc"
+        ]
+      },
+      "component": "express@4.16.0",
+      "related": [
+        "GHSA-rv95-896h-c2vc",
+        "GHSA-qw6h-vgh9-j6wx"
+      ],
+      "remediation": {
+        "summary": "Upgrade express to 4.20.0 or later and re-run the tests.",
+        "automatable": true
+      },
+      "false_positive_guidance": "Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.",
+      "detected_at": "2026-09-24T04:52:04.817697435Z"
+    },
+    {
+      "id": "CSI-57c2a4e841593d6d",
+      "dimension": "evolution",
+      "category": "deprecated-library",
+      "title": "Moment.js is in maintenance mode",
+      "description": "The Moment.js maintainers consider it a legacy project and recommend Luxon, date-fns, Day.js or the Temporal API for new work.",
+      "severity": "low",
+      "confidence": "high",
+      "source": {
+        "capability": "tech-detect",
+        "version": "0.1.0"
+      },
+      "rule": {
+        "id": "deprecated-moment",
+        "references": [
+          "https://momentjs.com/docs/#/-project-status/"
+        ]
+      },
+      "component": "moment",
+      "remediation": {
+        "summary": "Plan a gradual migration to a maintained date library.",
+        "automatable": false
+      },
+      "detected_at": "2026-09-24T04:52:03.582261611Z"
+    },
+    {
+      "id": "CSI-e6a1f31c964f99b2",
+      "dimension": "structure",
+      "category": "dependency-cycle",
+      "title": "Circular dependency between 2 modules",
+      "description": "src/utils/dates.js, src/utils/log.js depend on each other in a cycle. None of them can be changed, tested or extracted in isolation.",
+      "severity": "low",
+      "confidence": "high",
+      "evidence": [
+        {
+          "path": "src/utils/dates.js",
+          "start_line": 2,
+          "detail": "src/utils/dates.js → src/utils/log.js"
+        },
+        {
+          "path": "src/utils/log.js",
+          "start_line": 1,
+          "detail": "src/utils/log.js → src/utils/dates.js"
+        }
+      ],
+      "source": {
+        "capability": "architecture",
+        "version": "0.1.0"
+      },
+      "rule": {
+        "id": "dependency-cycle"
+      },
+      "impact": {
+        "technical": "Changes ripple through every module in the cycle; initialisation order bugs in JavaScript and Python."
+      },
+      "remediation": {
+        "summary": "Break the cycle by moving the shared piece into a separate module both depend on, or invert one dependency through an interface or callback.",
+        "automatable": false
+      },
+      "detected_at": "2026-09-24T04:52:03.068706722Z"
+    },
+    {
+      "id": "CSI-dada79d1970fc26f",
+      "dimension": "operability",
+      "category": "missing-ci",
+      "title": "No CI/CD configuration found",
+      "description": "No pipeline definition (GitHub Actions, GitLab CI, Jenkins, CircleCI, Azure Pipelines, …) was found, so builds and tests are presumably run by hand.",
+      "severity": "low",
+      "confidence": "medium",
+      "source": {
+        "capability": "fingerprint",
+        "version": "0.1.0"
+      },
+      "rule": {
+        "id": "no-ci"
+      },
+      "remediation": {
+        "summary": "Add a pipeline that builds, tests and scans every change.",
+        "automatable": true
+      },
+      "false_positive_guidance": "CI may be configured outside the repository (e.g. in a separate pipelines repository or a hosted service UI).",
+      "detected_at": "2026-09-24T04:52:03.052533966Z"
+    }
+  ],
+  "facts": {
+    "architecture": {
+      "nodes": [
+        {
+          "id": "src",
+          "language": "JavaScript",
+          "files": 2,
+          "lines": 22
+        },
+        {
+          "id": "src/routes",
+          "language": "JavaScript",
+          "files": 1,
+          "lines": 13,
+          "layer": "interface"
+        },
+        {
+          "id": "src/utils",
+          "language": "JavaScript",
+          "files": 2,
+          "lines": 19,
+          "layer": "shared"
+        }
+      ],
+      "edges": [
+        {
+          "from": "src",
+          "to": "src/routes",
+          "weight": 1
+        },
+        {
+          "from": "src",
+          "to": "src/utils",
+          "weight": 2
+        },
+        {
+          "from": "src/routes",
+          "to": "src",
+          "weight": 1
+        }
+      ],
+      "cycles": [
+        [
+          "src/utils/dates.js",
+          "src/utils/log.js"
+        ]
+      ],
+      "external": [
+        "express",
+        "lodash",
+        "moment",
+        "mysql"
+      ],
+      "mermaid": "graph LR\n  n_src[\"src\u003cbr/\u003e2 files\"]\n  n_src_routes[\"src/routes\u003cbr/\u003e1 files\"]\n  n_src_utils[\"src/utils\u003cbr/\u003e2 files\"]\n  n_src --\u003e|1| n_src_routes\n  n_src --\u003e|2| n_src_utils\n  n_src_routes --\u003e|1| n_src"
+    },
+    "code-health": {
+      "files_measured": 5,
+      "functions": 4,
+      "avg_complexity": 1.3,
+      "p90_complexity": 1,
+      "max_complexity": 2,
+      "complex_functions": 0,
+      "long_functions": 0,
+      "source_lines": 54,
+      "duplicated_lines": 0,
+      "duplication_pct": 0,
+      "clones": 0,
+      "markers": 1,
+      "top_functions": [
+        {
+          "path": "src/db.js",
+          "name": "query",
+          "line": 6,
+          "complexity": 2,
+          "lines": 4
+        },
+        {
+          "path": "src/utils/dates.js",
+          "name": "formatDate",
+          "line": 4,
+          "complexity": 1,
+          "lines": 3
+        },
+        {
+          "path": "src/utils/dates.js",
+          "name": "auditDate",
+          "line": 8,
+          "complexity": 1,
+          "lines": 3
+        },
+        {
+          "path": "src/utils/log.js",
+          "name": "logQuery",
+          "line": 3,
+          "complexity": 1,
+          "lines": 3
+        }
+      ],
+      "heuristic_languages": [
+        "JavaScript"
+      ]
+    },
+    "dependencies": {
+      "packages": [
+        {
+          "name": "body-parser",
+          "version": "1.18.2",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/body-parser@1.18.2?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": false
+        },
+        {
+          "name": "express",
+          "version": "4.16.0",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/express@4.16.0?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true
+        },
+        {
+          "name": "jsonwebtoken",
+          "version": "8.5.1",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/jsonwebtoken@8.5.1?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true
+        },
+        {
+          "name": "lodash",
+          "version": "4.17.15",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/lodash@4.17.15?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true
+        },
+        {
+          "name": "moment",
+          "version": "2.29.1",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/moment@2.29.1?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true
+        },
+        {
+          "name": "mysql",
+          "version": "2.18.1",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/mysql@2.18.1?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true
+        },
+        {
+          "name": "nodemon",
+          "version": "2.0.4",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/nodemon@2.0.4?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": true,
+          "dev": true
+        },
+        {
+          "name": "qs",
+          "version": "6.5.1",
+          "ecosystem": "npm",
+          "purl": "pkg:npm/qs@6.5.1?source=PUBLIC_REGISTRY",
+          "locations": [
+            "package-lock.json"
+          ],
+          "direct": false
+        }
+      ],
+      "manifests": [
+        {
+          "path": "package-lock.json",
+          "ecosystem": "npm",
+          "lockfile": true,
+          "extractor": "javascript/packagelockjson",
+          "packages": 8
+        }
+      ]
+    },
+    "fingerprint": {
+      "name": "legacy-shop-api",
+      "primary_language": "JavaScript",
+      "project_types": [
+        "application",
+        "web-backend"
+      ],
+      "package_managers": [
+        "npm"
+      ],
+      "build_systems": [
+        "npm scripts"
+      ],
+      "runtimes": [
+        {
+          "name": "Node.js",
+          "version": "12.22.0",
+          "source": ".nvmrc"
+        }
+      ],
+      "manifests": [
+        "package.json"
+      ],
+      "entry_points": [
+        "Dockerfile",
+        "src/server.js"
+      ],
+      "monorepo": false,
+      "has_tests": false,
+      "has_containers": true,
+      "has_docs": true,
+      "size": "tiny",
+      "digest": "fp_ced71e1056a9b8dc7247"
+    },
+    "inventory": {
+      "files": null,
+      "languages": [
+        {
+          "language": "JavaScript",
+          "files": 5,
+          "lines": 54,
+          "share": 1
+        }
+      ],
+      "kind_counts": {
+        "build": 2,
+        "config": 1,
+        "container": 1,
+        "docs": 1,
+        "source": 5
+      },
+      "total_files": 10,
+      "total_bytes": 3722,
+      "total_lines": 106,
+      "method": "walk"
+    },
+    "technologies": {
+      "items": [
+        {
+          "name": "JavaScript",
+          "category": "language",
+          "confidence": "high",
+          "evidence": [
+            "5 files, 54 lines"
+          ]
+        },
+        {
+          "name": "Node.js",
+          "category": "runtime",
+          "version": "12.22.0",
+          "confidence": "high",
+          "evidence": [
+            ".nvmrc"
+          ],
+          "eol": "2022-04-30"
+        },
+        {
+          "name": "Express",
+          "category": "web-framework",
+          "version": "4.16.0",
+          "confidence": "high",
+          "evidence": [
+            "package-lock.json",
+            "package.json"
+          ],
+          "website": "https://expressjs.com"
+        },
+        {
+          "name": "MySQL",
+          "category": "database",
+          "version": "2.18.1",
+          "confidence": "high",
+          "evidence": [
+            "package-lock.json",
+            "package.json"
+          ],
+          "website": "https://www.mysql.com"
+        },
+        {
+          "name": "Docker",
+          "category": "infrastructure",
+          "confidence": "high",
+          "evidence": [
+            "Dockerfile"
+          ],
+          "website": "https://www.docker.com"
+        },
+        {
+          "name": "Lodash",
+          "category": "library",
+          "version": "4.17.15",
+          "confidence": "high",
+          "evidence": [
+            "package-lock.json",
+            "package.json"
+          ],
+          "website": "https://lodash.com"
+        },
+        {
+          "name": "Moment.js",
+          "category": "library",
+          "version": "2.29.1",
+          "confidence": "high",
+          "evidence": [
+            "package-lock.json",
+            "package.json"
+          ],
+          "website": "https://momentjs.com"
+        }
+      ]
+    }
+  },
+  "capabilities": [
+    {
+      "id": "ai-signals",
+      "name": "AI-Generation Signals",
+      "version": "0.1.0",
+      "category": "ai",
+      "status": "ok",
+      "summary": "0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s)",
+      "duration_ms": 1,
+      "findings": 0,
+      "experimental": true,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "limitations": [
+        "Experimental heuristics. These are indicators of unreviewed AI-generated output, not proof of AI use, and not a measure of quality on their own."
+      ]
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture Mapper",
+      "version": "0.1.0",
+      "category": "structure",
+      "status": "ok",
+      "summary": "3 modules, 3 internal dependencies, 1 cycle(s), 4 external packages",
+      "duration_ms": 16,
+      "findings": 1,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "limitations": [
+        "Dependencies are derived from static import statements; dynamic imports, dependency injection and reflection are not visible."
+      ]
+    },
+    {
+      "id": "code-health",
+      "name": "Code Health",
+      "version": "0.1.0",
+      "category": "maintainability",
+      "status": "ok",
+      "summary": "4 functions in 5 files; avg complexity 1.3, max 2; 0.0% duplicated; 0 hotspot(s)",
+      "duration_ms": 12,
+      "findings": 0,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "limitations": [
+        "Function metrics for JavaScript use lexical heuristics, not a full parser; small deviations from compiler-accurate values are expected.",
+        "No git history available, so change hotspots could not be computed."
+      ]
+    },
+    {
+      "id": "dependencies",
+      "name": "Dependency Inventory & SBOM",
+      "version": "0.1.0",
+      "category": "supply-chain",
+      "status": "ok",
+      "summary": "8 packages (6 direct) from 1 manifest(s): npm 8",
+      "duration_ms": 16,
+      "findings": 0,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "engines": [
+        {
+          "name": "OSV-SCALIBR",
+          "version": "0.5.3",
+          "license": "Apache-2.0",
+          "url": "https://github.com/google/osv-scalibr"
+        }
+      ]
+    },
+    {
+      "id": "fingerprint",
+      "name": "Project Fingerprint",
+      "version": "0.1.0",
+      "category": "discovery",
+      "status": "ok",
+      "summary": "application/web-backend project in JavaScript on Node.js 12.22.0",
+      "duration_ms": 0,
+      "findings": 2,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      }
+    },
+    {
+      "id": "inventory",
+      "name": "Repository Inventory",
+      "version": "0.1.0",
+      "category": "discovery",
+      "status": "ok",
+      "summary": "10 files, 106 lines, 1 languages (listed via walk)",
+      "duration_ms": 1,
+      "findings": 0,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "limitations": [
+        "No git metadata was available, so .gitignore rules were not applied; built-in exclusions were used instead."
+      ]
+    },
+    {
+      "id": "secrets",
+      "name": "Secret Scanner",
+      "version": "0.1.0",
+      "category": "security",
+      "status": "ok",
+      "summary": "0 potential secret(s) in 9 scanned files",
+      "duration_ms": 526,
+      "findings": 0,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "engines": [
+        {
+          "name": "Gitleaks",
+          "version": "8.30.1",
+          "license": "MIT",
+          "url": "https://github.com/gitleaks/gitleaks"
+        }
+      ],
+      "limitations": [
+        "Only the current working tree was scanned. Secrets removed in earlier commits remain in git history and are not reported here.",
+        "Secrets were not verified against provider APIs, so some may be revoked, test or example values."
+      ]
+    },
+    {
+      "id": "tech-detect",
+      "name": "Technology & Version Detector",
+      "version": "0.1.0",
+      "category": "discovery",
+      "status": "ok",
+      "summary": "7 technologies detected: Node.js, Express, MySQL, Docker, Lodash, Moment.js",
+      "duration_ms": 2,
+      "findings": 2,
+      "execution": {
+        "local": true,
+        "network": "none",
+        "ai": "none"
+      },
+      "limitations": [
+        "End-of-life data is bundled (as of 2026-09-23) so detection works offline; newer releases or policy changes after that date are not reflected."
+      ]
+    },
+    {
+      "id": "vulns",
+      "name": "Known Vulnerability Scanner",
+      "version": "0.1.0",
+      "category": "security",
+      "status": "ok",
+      "summary": "6 of 8 versioned packages have known vulnerabilities (18 advisories)",
+      "duration_ms": 1237,
+      "findings": 6,
+      "execution": {
+        "local": false,
+        "network": "required",
+        "ai": "none",
+        "network_hosts": [
+          "api.osv.dev"
+        ]
+      },
+      "engines": [
+        {
+          "name": "OSV.dev",
+          "license": "Apache-2.0 (service); advisory data CC-BY-4.0 and per-source licenses",
+          "url": "https://osv.dev"
+        }
+      ],
+      "limitations": [
+        "Only dependencies with exact versions (from lockfiles) can be matched. Declared ranges without a lockfile are not checked."
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "kind": "access",
+      "title": "Add the deployed URL",
+      "reason": "The repository shows the code. The deployed URL adds external exposure, TLS and security-header checks of what users actually reach.",
+      "runnable": false,
+      "priority": 5
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "sbom.cdx.json",
+      "capability": "dependencies",
+      "media_type": "application/vnd.cyclonedx+json",
+      "path": "sbom.cdx.json",
+      "bytes": 5450
+    }
+  ],
+  "data_boundary": {
+    "left_machine": true,
+    "ai_used": false,
+    "calls": [
+      {
+        "capability": "vulns",
+        "host": "api.osv.dev",
+        "method": "GET",
+        "count": 18
+      },
+      {
+        "capability": "vulns",
+        "host": "api.osv.dev",
+        "method": "POST",
+        "count": 1
+      }
+    ],
+    "disclosures": [
+      {
+        "capability": "vulns",
+        "statement": "Sends package names, ecosystems and versions (never source code, file contents or paths) to api.osv.dev, the open vulnerability database operated by Google's Open Source Security Team."
+      }
+    ],
+    "statement": "Network requests were made to api.osv.dev by vulns. Source files were not uploaded; each disclosure states exactly what was sent."
+  },
+  "limitations": [
+    "AI-Generation Signals: Experimental heuristics. These are indicators of unreviewed AI-generated output, not proof of AI use, and not a measure of quality on their own.",
+    "Architecture Mapper: Dependencies are derived from static import statements; dynamic imports, dependency injection and reflection are not visible.",
+    "Code Health: Function metrics for JavaScript use lexical heuristics, not a full parser; small deviations from compiler-accurate values are expected.",
+    "Code Health: No git history available, so change hotspots could not be computed.",
+    "Repository Inventory: No git metadata was available, so .gitignore rules were not applied; built-in exclusions were used instead.",
+    "Secret Scanner: Only the current working tree was scanned. Secrets removed in earlier commits remain in git history and are not reported here.",
+    "Secret Scanner: Secrets were not verified against provider APIs, so some may be revoked, test or example values.",
+    "Technology & Version Detector: End-of-life data is bundled (as of 2026-09-23) so detection works offline; newer releases or policy changes after that date are not reflected.",
+    "Known Vulnerability Scanner: Only dependencies with exact versions (from lockfiles) can be matched. Declared ranges without a lockfile are not checked.",
+    "Automated analysis reports what its analyzers can detect. It does not certify software as secure or defect-free."
+  ]
+}

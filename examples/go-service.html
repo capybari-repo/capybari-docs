@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software X-Ray: go-service</title>
+<style>
+:root{--bg:#fbfaf9;--card:#ffffff;--ink:#121110;--ink2:#4c4640;--muted:#837c74;--line:#e3e0db;--accent:#0b8168;--accent-bg:#eafbf5;
+--crit:#b42318;--high:#bc591d;--med:#a16207;--low:#4f6f94;--info:#837c74;--good:#0b8168;--fair:#a16207;--poor:#b42318;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0908;--card:#171512;--ink:#f6f4f1;--ink2:#c4bdb4;--muted:#968f86;--line:#34302b;--accent:#35c09a;--accent-bg:rgba(53,192,154,.12);
+--crit:#f97066;--high:#edaa6b;--med:#facc15;--low:#8fb3dc;--info:#968f86;--good:#35c09a;--fair:#facc15;--poor:#f97066;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 InterVariable,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}a{color:var(--accent)}code,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+header .kicker{color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+h1{font-size:28px;margin:4px 0 8px;overflow-wrap:anywhere}h2{font-size:19px;margin:36px 0 12px}h3{font-size:15px;margin:0 0 6px}
+.headline{font-size:17px;color:var(--ink2);margin:0 0 12px}.meta{color:var(--muted);font-size:13px}.meta span{margin-right:14px;display:inline-block}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+a.score{display:block;text-decoration:none;color:inherit}a.score:hover{border-color:var(--accent)}
+.score .v{font-size:34px;font-weight:700;line-height:1.1}.score .n{font-weight:600}.score .s{color:var(--muted);font-size:12.5px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
+.good{color:var(--good)}.fair{color:var(--fair)}.poor{color:var(--poor)}.bg-good{background:var(--good)}.bg-fair{background:var(--fair)}.bg-poor{background:var(--poor)}
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}dl.facts dt{color:var(--muted)}dl.facts dd{margin:0;overflow-wrap:anywhere}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;font-size:13px}
+.counts span{margin-right:12px;font-weight:600}
+.sev{display:inline-block;min-width:68px;text-align:center;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff}
+.sev-critical{background:var(--crit)}.sev-high{background:var(--high)}.sev-medium{background:var(--med)}.sev-low{background:var(--low)}.sev-info{background:var(--info)}
+details.f{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:10px 14px}
+details.f summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;list-style:none}details.f summary::-webkit-details-marker{display:none}
+details.f summary .t{font-weight:600;flex:1 1 300px}details.f summary .c{color:var(--muted);font-size:12.5px}
+.body{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}.body p{margin:6px 0}.body p.desc{white-space:pre-line}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:4px 0 8px}
+.new{color:var(--accent);font-weight:700;font-size:12px}
+ol.recs{padding-left:20px}ol.recs li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.muted{color:var(--muted)}.pill{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--muted)}
+.boundary{border-left:4px solid var(--accent);background:var(--accent-bg)}
+footer{margin-top:48px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body><main>
+<header>
+<div class="kicker">Capybari Source Intelligence · Software X-Ray</div>
+<h1>go-service</h1>
+<p class="headline">go-service: 3 critical/high finding(s) in Security, Technology Currency. Start there.</p>
+<div class="meta"><span>repository · <code>capybari-fixtures/go-service</code></span><span>2026-09-24 04:52 UTC</span><span>3.0s</span><span>online</span><span>capybari 0136b2b</span></div>
+</header>
+
+
+<h2>Scores <span class="pill">0 = worst · 100 = best</span></h2>
+<div class="grid">
+<a class="card score" href="#dim-ai-signals" title="No issues found by ai-signals.">
+<div class="n">AI Dependability</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · low confidence</div><div class="s">No issues found by ai-signals.</div></a>
+<a class="card score" href="#dim-dependencies" title="No issues found by dependencies.">
+<div class="n">Dependency Hygiene</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by dependencies.</div></a>
+<a class="card score" href="#dim-evolution" title="1 high finding(s) by tech-detect.">
+<div class="n">Technology Currency</div><div class="v fair">77<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-fair" style="width:77%"></i></div>
+<div class="s">fair · high confidence</div><div class="s">1 high finding(s) by tech-detect.</div></a>
+<a class="card score" href="#dim-maintainability" title="No issues found by code-health.">
+<div class="n">Maintainability</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by code-health.</div></a>
+<a class="card score" href="#dim-operability" title="1 low finding(s) by fingerprint.">
+<div class="n">Operability</div><div class="v good">98<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:98%"></i></div>
+<div class="s">good · high confidence</div><div class="s">1 low finding(s) by fingerprint.</div></a>
+<a class="card score" href="#dim-security" title="2 high, 1 medium finding(s) by secrets, vulns.">
+<div class="n">Security</div><div class="v fair">60<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-fair" style="width:60%"></i></div>
+<div class="s">fair · high confidence</div><div class="s">2 high, 1 medium finding(s) by secrets, vulns.</div></a>
+<a class="card score" href="#dim-structure" title="No issues found by architecture.">
+<div class="n">Structure</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by architecture.</div></a>
+
+</div>
+
+
+<h2>What is it?</h2>
+<div class="card"><dl class="facts">
+
+<dt>Project type</dt><dd>application, web-backend</dd>
+<dt>Primary language</dt><dd>Go</dd>
+<dt>Package managers</dt><dd>Go modules</dd>
+<dt>Runtimes</dt><dd>Go 1.19; </dd>
+<dt>Entry points</dt><dd><code>cmd/server/</code> </dd>
+<dt>Tests · CI · Containers</dt><dd>yes · none · no</dd>
+
+<dt>Size · Fingerprint</dt><dd>tiny · <code>fp_0c1251ef491bd3718493</code></dd>
+
+<dt>Files</dt><dd>6 files · 85 lines</dd>
+<dt>Languages</dt><dd class="chips"><span>Go 100%</span></dd>
+
+<dt>Technologies</dt><dd class="chips"><span title="language">Go 1.19</span><span title="web-framework">Gin 1.7.0</span></dd>
+<dt>Dependencies</dt><dd>3 packages from 1 manifest(s) · 3 direct</dd>
+<dt>Architecture</dt><dd>3 modules · 3 dependencies</dd>
+</dl></div>
+
+<h2>Findings</h2>
+<p class="counts"><span class="poor">0 critical</span><span style="color:var(--high)">3 high</span><span class="fair">1 medium</span><span style="color:var(--low)">1 low</span><span class="muted">0 info</span></p>
+
+
+<details class="f" id="f-CSI-aebfe9feb75da0e0" open><summary><span class="sev sev-high">high</span><span class="t">Go 1.19 is end-of-life</span><span class="c" id="dim-evolution">evolution · high confidence · tech-detect</span></summary>
+<div class="body">
+<p class="desc">Go 1.19 (release line 1.19) reached end-of-life on 2023-08-08. It no longer receives security fixes, so known vulnerabilities in it stay unpatched. Each Go release is supported until two newer major releases exist.</p>
+
+
+<p><strong>Impact:</strong> Unpatched vulnerabilities and increasing incompatibility with current libraries and platforms. Security and compliance exposure that grows over time, and upgrades that get larger the longer they are postponed.</p>
+<p><strong>What to do:</strong> Upgrade Go to a supported release line (see https://endoflife.date/go) and test the application against it.</p>
+<p class="muted">Rule <code>eol-go</code> · <a href="https://endoflife.date/go" rel="noopener">https://endoflife.date/go</a></p>
+<p class="muted">False positive? If the declared version is only a minimum (e.g. &gt;=12) and production runs a newer release, update the declaration to match.</p>
+<p class="muted">ID <code>CSI-aebfe9feb75da0e0</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-7bcc538ccacbac9c" open><summary><span class="sev sev-high">high</span><span class="t">github.com/gin-gonic/gin 1.7.0 has 5 known vulnerabilities</span><span class="c" id="dim-security">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-h395-qcrw-5vmq (high, CVSS 7.1) CVE-2020-28483, GO-2021-0052: Inconsistent Interpretation of HTTP Requests in github.com/gin-gonic/gin
+- GHSA-3vp4-m3rf-835h (medium, CVSS 5.6) CVE-2023-26125: Improper input validation in github.com/gin-gonic/gin
+- GHSA-2c4m-59x9-fr2g (medium, CVSS 4.3) CVE-2023-29401, GO-2023-1737: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function
+- GO-2021-0052 (medium) CVE-2020-28483, GHSA-h395-qcrw-5vmq: Inconsistent interpretation of HTTP Requests in github.com/gin-gonic/gin
+- GO-2023-1737 (medium) CVE-2023-29401, GHSA-2c4m-59x9-fr2g: Improper handling of filenames in Content-Disposition HTTP header in github.com/gin-gonic/gin</p>
+<p><code>go.mod</code> — resolves github.com/gin-gonic/gin 1.7.0</p>
+
+
+<p><strong>What to do:</strong> Upgrade github.com/gin-gonic/gin to 1.9.1 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-h395-qcrw-5vmq</code> · <a href="https://osv.dev/vulnerability/GHSA-h395-qcrw-5vmq" rel="noopener">https://osv.dev/vulnerability/GHSA-h395-qcrw-5vmq</a> · <a href="https://osv.dev/vulnerability/GHSA-3vp4-m3rf-835h" rel="noopener">https://osv.dev/vulnerability/GHSA-3vp4-m3rf-835h</a> · <a href="https://osv.dev/vulnerability/GHSA-2c4m-59x9-fr2g" rel="noopener">https://osv.dev/vulnerability/GHSA-2c4m-59x9-fr2g</a> · <a href="https://osv.dev/vulnerability/GO-2021-0052" rel="noopener">https://osv.dev/vulnerability/GO-2021-0052</a> · <a href="https://osv.dev/vulnerability/GO-2023-1737" rel="noopener">https://osv.dev/vulnerability/GO-2023-1737</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2020-28483" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2020-28483</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-7bcc538ccacbac9c</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-6b7027191989a3ed" open><summary><span class="sev sev-high">high</span><span class="t">golang.org/x/text 0.3.5 has 5 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-69ch-w2m2-3vjp (high, CVSS 7.5) CVE-2022-32149, GO-2022-1059: golang.org/x/text/language Denial of service via crafted Accept-Language header
+- GHSA-ppp9-7jff-5vj2 (high, CVSS 7.5) CVE-2021-38561, GO-2021-0113: golang.org/x/text/language Out-of-bounds Read vulnerability
+- GO-2021-0113 (medium) CVE-2021-38561, GHSA-ppp9-7jff-5vj2: Out-of-bounds read in golang.org/x/text/language
+- GO-2022-1059 (medium) CVE-2022-32149, GHSA-69ch-w2m2-3vjp: Denial of service via crafted Accept-Language header in golang.org/x/text/language
+- GO-2026-5970 (medium) CVE-2026-56852: Infinite loop on invalid input in golang.org/x/text</p>
+<p><code>go.mod</code> — resolves golang.org/x/text 0.3.5</p>
+
+
+<p><strong>What to do:</strong> Upgrade golang.org/x/text to 0.39.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-69ch-w2m2-3vjp</code> · <a href="https://osv.dev/vulnerability/GHSA-69ch-w2m2-3vjp" rel="noopener">https://osv.dev/vulnerability/GHSA-69ch-w2m2-3vjp</a> · <a href="https://osv.dev/vulnerability/GHSA-ppp9-7jff-5vj2" rel="noopener">https://osv.dev/vulnerability/GHSA-ppp9-7jff-5vj2</a> · <a href="https://osv.dev/vulnerability/GO-2021-0113" rel="noopener">https://osv.dev/vulnerability/GO-2021-0113</a> · <a href="https://osv.dev/vulnerability/GO-2022-1059" rel="noopener">https://osv.dev/vulnerability/GO-2022-1059</a> · <a href="https://osv.dev/vulnerability/GO-2026-5970" rel="noopener">https://osv.dev/vulnerability/GO-2026-5970</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32149" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2022-32149</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-6b7027191989a3ed</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-013dcba0845e2ea1"><summary><span class="sev sev-medium">medium</span><span class="t">stdlib 1.19 has 97 known vulnerabilities</span><span class="c">security · medium confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GO-2022-0969 (medium) BIT-golang-2022-27664, CVE-2022-27664: Denial of service in net/http and golang.org/x/net/http2
+- GO-2022-0988 (medium) BIT-golang-2022-32190, CVE-2022-32190: Failure to strip relative path components in net/url
+- GO-2022-1037 (medium) BIT-golang-2022-2879, CVE-2022-2879: Unbounded memory consumption when reading headers in archive/tar
+- GO-2022-1038 (medium) BIT-golang-2022-2880, CVE-2022-2880: Incorrect sanitization of forwarded query parameters in net/http/httputil
+- GO-2022-1039 (medium) BIT-golang-2022-41715, CVE-2022-41715: Memory exhaustion when compiling regular expressions in regexp/syntax
+- GO-2022-1095 (medium) BIT-golang-2022-41716, CVE-2022-41716: Unsanitized NUL in environment variables on Windows in syscall and os/exec
+- GO-2022-1143 (medium) BIT-golang-2022-41720, CVE-2022-41720: Restricted file access on Windows in os and net/http
+- GO-2022-1144 (medium) BIT-golang-2022-41717, CVE-2022-41717: Excessive memory growth in net/http and golang.org/x/net/http2
+- GO-2023-1568 (medium) BIT-golang-2022-41722, CVE-2022-41722: Path traversal on Windows in path/filepath
+- GO-2023-1569 (medium) BIT-golang-2022-41725, CVE-2022-41725: Excessive resource consumption in mime/multipart
+- GO-2023-1570 (medium) BIT-golang-2022-41724, CVE-2022-41724: Panic on large handshake records in crypto/tls
+- GO-2023-1571 (medium) BIT-golang-2022-41723, CVE-2022-41723: Denial of service via crafted HTTP/2 stream in net/http and golang.org/x/net
+- GO-2023-1621 (medium) BIT-golang-2023-24532, CVE-2023-24532: Incorrect calculation on P256 curves in crypto/internal/nistec
+- GO-2023-1702 (medium) BIT-golang-2023-24537, CVE-2023-24537: Infinite loop in parsing in go/scanner
+- GO-2023-1703 (medium) BIT-golang-2023-24538, CVE-2023-24538: Backticks not treated as string delimiters in html/template
+- GO-2023-1704 (medium) BIT-golang-2023-24534, CVE-2023-24534: Excessive memory allocation in net/http and net/textproto
+- GO-2023-1705 (medium) BIT-golang-2023-24536, CVE-2023-24536: Excessive resource consumption in net/http, net/textproto and mime/multipart
+- GO-2023-1751 (medium) BIT-golang-2023-24539, CVE-2023-24539: Improper sanitization of CSS values in html/template
+- GO-2023-1752 (medium) BIT-golang-2023-24540, CVE-2023-24540: Improper handling of JavaScript whitespace in html/template
+- GO-2023-1753 (medium) BIT-golang-2023-29400, CVE-2023-29400: Improper handling of empty HTML attributes in html/template
+- GO-2023-1840 (medium) BIT-golang-2023-29403, CVE-2023-29403: Unsafe behavior in setuid/setgid binaries in runtime
+- GO-2023-1878 (medium) BIT-golang-2023-29406, CVE-2023-29406: Insufficient sanitization of Host header in net/http
+- GO-2023-1987 (medium) BIT-golang-2023-29409, CVE-2023-29409: Large RSA keys can cause high CPU usage in crypto/tls
+- GO-2023-2041 (medium) BIT-golang-2023-39318, CVE-2023-39318: Improper handling of HTML-like comments in script contexts in html/template
+- GO-2023-2043 (medium) BIT-golang-2023-39319, CVE-2023-39319: Improper handling of special tags within script contexts in html/template
+- GO-2023-2102 (medium) BIT-golang-2023-39325, CVE-2023-39325: HTTP/2 rapid reset can cause excessive work in net/http
+- GO-2023-2185 (medium) BIT-golang-2023-45283, CVE-2023-45283: Insecure parsing of Windows paths with a \??\ prefix in path/filepath
+- GO-2023-2186 (medium) BIT-golang-2023-45284, CVE-2023-45284: Incorrect detection of reserved device names on Windows in path/filepath
+- GO-2023-2375 (medium) BIT-golang-2023-45287, CVE-2023-45287: Before Go 1.20, the RSA based key exchange methods in crypto/tls may exhibit a timing side channel
+- GO-2023-2382 (medium) BIT-golang-2023-39326, CVE-2023-39326: Denial of service via chunk extensions in net/http
+- GO-2024-2598 (medium) BIT-golang-2024-24783, CVE-2024-24783: Verify panics on certificates with an unknown public key algorithm in crypto/x509
+- GO-2024-2599 (medium) BIT-golang-2023-45290, CVE-2023-45290: Memory exhaustion in multipart form parsing in net/textproto and net/http
+- GO-2024-2600 (medium) BIT-golang-2023-45289, CVE-2023-45289: Incorrect forwarding of sensitive headers and cookies on HTTP redirect in net/http
+- GO-2024-2609 (medium) BIT-golang-2024-24784, CVE-2024-24784: Comments in display names are incorrectly handled in net/mail
+- GO-2024-2610 (medium) BIT-golang-2024-24785, CVE-2024-24785: Errors returned from JSON marshaling may break template escaping in html/template
+- GO-2024-2687 (medium) BIT-golang-2023-45288, CVE-2023-45288: HTTP/2 CONTINUATION flood in net/http
+- GO-2024-2887 (medium) BIT-golang-2024-24790, CVE-2024-24790: Unexpected behavior from Is methods for IPv4-mapped IPv6 addresses in net/netip
+- GO-2024-2888 (medium) BIT-golang-2024-24789, CVE-2024-24789: Mishandling of corrupt central directory record in archive/zip
+- GO-2024-2963 (medium) BIT-golang-2024-24791, CVE-2024-24791: Denial of service due to improper 100-continue handling in net/http
+- GO-2024-3105 (medium) BIT-golang-2024-34155, CVE-2024-34155: Stack exhaustion in all Parse functions in go/parser
+- GO-2024-3106 (medium) BIT-golang-2024-34156, CVE-2024-34156: Stack exhaustion in Decoder.Decode in encoding/gob
+- GO-2024-3107 (medium) BIT-golang-2024-34158, CVE-2024-34158: Stack exhaustion in Parse in go/build/constraint
+- GO-2025-3373 (medium) BIT-golang-2024-45341, CVE-2024-45341: Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509
+- GO-2025-3420 (medium) BIT-golang-2024-45336, CVE-2024-45336: Sensitive headers incorrectly sent after cross-domain redirect in net/http
+- GO-2025-3447 (medium) BIT-golang-2025-22866, CVE-2025-22866: Timing sidechannel for P-256 on ppc64le in crypto/internal/nistec
+- GO-2025-3503 (medium) CVE-2025-22870, GHSA-qxp5-gwg8-xv66: HTTP Proxy bypass using IPv6 Zone IDs in golang.org/x/net
+- GO-2025-3563 (medium) BIT-golang-2025-22871, CVE-2025-22871: Request smuggling due to acceptance of invalid chunked data in net/http
+- GO-2025-3750 (medium) BIT-golang-2025-0913, CVE-2025-0913: Inconsistent handling of O_CREATE|O_EXCL on Unix and Windows in os in syscall
+- GO-2025-3751 (medium) BIT-golang-2025-4673, CVE-2025-4673: Sensitive headers not cleared on cross-origin redirect in net/http
+- GO-2025-3849 (medium) BIT-golang-2025-47907, CVE-2025-47907: Incorrect results returned from Rows.Scan in database/sql
+- GO-2025-3956 (medium) BIT-golang-2025-47906, CVE-2025-47906: Unexpected paths returned from LookPath in os/exec
+- GO-2025-4006 (medium) BIT-golang-2025-61725, CVE-2025-61725: Excessive CPU consumption in ParseAddress in net/mail
+- GO-2025-4007 (medium) BIT-golang-2025-58187, CVE-2025-58187: Quadratic complexity when checking name constraints in crypto/x509
+- GO-2025-4008 (medium) BIT-golang-2025-58189, CVE-2025-58189: ALPN negotiation error contains attacker controlled information in crypto/tls
+- GO-2025-4009 (medium) BIT-golang-2025-61723, CVE-2025-61723: Quadratic complexity when parsing some invalid inputs in encoding/pem
+- GO-2025-4010 (medium) BIT-golang-2025-47912, CVE-2025-47912: Insufficient validation of bracketed IPv6 hostnames in net/url
+- GO-2025-4011 (medium) BIT-golang-2025-58185, CVE-2025-58185: Parsing DER payload can cause memory exhaustion in encoding/asn1
+- GO-2025-4012 (medium) BIT-golang-2025-58186, CVE-2025-58186: Lack of limit when parsing cookies can cause memory exhaustion in net/http
+- GO-2025-4013 (medium) BIT-golang-2025-58188, CVE-2025-58188: Panic when validating certificates with DSA public keys in crypto/x509
+- GO-2025-4014 (medium) BIT-golang-2025-58183, CVE-2025-58183: Unbounded allocation when parsing GNU sparse map in archive/tar
+- GO-2025-4015 (medium) BIT-golang-2025-61724, CVE-2025-61724: Excessive CPU consumption in Reader.ReadResponse in net/textproto
+- GO-2025-4155 (medium) BIT-golang-2025-61729, CVE-2025-61729: Excessive resource consumption when printing error string for host certificate validation in crypto/x509
+- GO-2025-4175 (medium) BIT-golang-2025-61727, CVE-2025-61727: Improper application of excluded DNS name constraints when verifying wildcard names in crypto/x509
+- GO-2026-4337 (medium) BIT-golang-2025-68121, CVE-2025-68121: Unexpected session resumption in crypto/tls
+- GO-2026-4340 (medium) BIT-golang-2025-61730, CVE-2025-61730: Handshake messages may be processed at the incorrect encryption level in crypto/tls
+- GO-2026-4341 (medium) BIT-golang-2025-61726, CVE-2025-61726: Memory exhaustion in query parameter parsing in net/url
+- GO-2026-4342 (medium) BIT-golang-2025-61728, CVE-2025-61728: Excessive CPU consumption when building archive index in archive/zip
+- GO-2026-4403 (medium) BIT-golang-2025-22873, CVE-2025-22873: Improper access to parent directory of root in os
+- GO-2026-4601 (medium) BIT-golang-2026-25679, CVE-2026-25679: Incorrect parsing of IPv6 host literals in net/url
+- GO-2026-4602 (medium) BIT-golang-2026-27139, CVE-2026-27139: FileInfo can escape from a Root in os
+- GO-2026-4603 (medium) BIT-golang-2026-27142, CVE-2026-27142: URLs in meta content attribute actions are not escaped in html/template
+- GO-2026-4864 (medium) BIT-golang-2026-32282, CVE-2026-32282: TOCTOU permits root escape on Linux via Root.Chmod in os in internal/syscall/unix
+- GO-2026-4865 (medium) BIT-golang-2026-32289, CVE-2026-32289: JsBraceDepth Context Tracking Bugs (XSS) in html/template
+- GO-2026-4869 (medium) BIT-golang-2026-32288, CVE-2026-32288: Unbounded allocation for old GNU sparse in archive/tar
+- GO-2026-4870 (medium) BIT-golang-2026-32283, CVE-2026-32283: Unauthenticated TLS 1.3 KeyUpdate record can cause persistent connection retention and DoS in crypto/tls
+- GO-2026-4918 (medium) BIT-golang-2026-33814, CVE-2026-33814: Infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE in net/http/internal/http2 in golang.org/x/net
+- GO-2026-4946 (medium) BIT-golang-2026-32281, CVE-2026-32281: Inefficient policy validation in crypto/x509
+- GO-2026-4947 (medium) BIT-golang-2026-32280, CVE-2026-32280: Unexpected work during chain building in crypto/x509
+- GO-2026-4970 (medium) BIT-golang-2026-39822, CVE-2026-39822: Root escape via symlink plus trailing slash in os
+- GO-2026-4971 (medium) BIT-golang-2026-39836, CVE-2026-39836: Panic in Dial and LookupPort when handling NUL byte on Windows in net
+- GO-2026-4976 (medium) BIT-golang-2026-39825, CVE-2026-39825: ReverseProxy forwards queries with more than urlmaxqueryparams parameters in net/http/httputil
+- GO-2026-4977 (medium) BIT-golang-2026-42499, CVE-2026-42499: Quadratic string concatenation in consumePhrase in net/mail
+- GO-2026-4980 (medium) BIT-golang-2026-39826, CVE-2026-39826: Escaper bypass leads to XSS in html/template
+- GO-2026-4981 (medium) BIT-golang-2026-33811, CVE-2026-33811: Crash when handling long CNAME response in net
+- GO-2026-4982 (medium) BIT-golang-2026-39823, CVE-2026-39823: Bypass of meta content URL escaping causes XSS in html/template
+- GO-2026-4986 (medium) BIT-golang-2026-39820, CVE-2026-39820: Quadratic string concatentation in consumeComment in net/mail
+- GO-2026-5026 (medium) CVE-2026-39821: Invoking failure to reject ASCII-only Punycode-encoded labels in golang.org/x/net/idna
+- GO-2026-5037 (medium) BIT-golang-2026-27145, CVE-2026-27145: Inefficient candidate hostname parsing in crypto/x509
+- GO-2026-5038 (medium) BIT-golang-2026-42504, CVE-2026-42504: Quadratic complexity in WordDecoder.DecodeHeader in mime
+- GO-2026-5039 (medium) BIT-golang-2026-42507, CVE-2026-42507: Arbitrary inputs are included in errors without any escaping in net/textproto
+- GO-2026-5856 (medium) BIT-golang-2026-42505, CVE-2026-42505: Invoking Encrypted Client Hello privacy leak in crypto/tls
+- GO-2026-5972 (medium) BIT-golang-2026-33818, CVE-2026-33818: Enforce maximum recursion depth in encoding/asn1
+- GO-2026-6088 (medium) BIT-golang-2026-56859, CVE-2026-56859: Add recursion depth guard during decode in encoding/xml
+- GO-2026-6089 (medium) BIT-golang-2026-56853, CVE-2026-56853: Apply ReadHeaderTimeout when doing unencrypted HTTP/2 check in net/http
+- GO-2026-6090 (medium) BIT-golang-2026-56862, CVE-2026-56862: Limit handshake messages we are willing to accept post-handshake in crypto/tls
+- GO-2026-6091 (medium) BIT-golang-2026-56858, CVE-2026-56858: Fix Javascript regexp context tracking in html/template
+- GO-2026-6218 (medium) BIT-golang-2026-56860, CVE-2026-56860: Avoid quadratic complexity in resolvePath in net/url</p>
+<p><code>go.mod</code> — resolves stdlib 1.19</p>
+
+
+<p><strong>What to do:</strong> Upgrade stdlib to 1.25.13 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GO-2022-0969</code> · <a href="https://osv.dev/vulnerability/GO-2022-0969" rel="noopener">https://osv.dev/vulnerability/GO-2022-0969</a> · <a href="https://osv.dev/vulnerability/GO-2022-0988" rel="noopener">https://osv.dev/vulnerability/GO-2022-0988</a> · <a href="https://osv.dev/vulnerability/GO-2022-1037" rel="noopener">https://osv.dev/vulnerability/GO-2022-1037</a> · <a href="https://osv.dev/vulnerability/GO-2022-1038" rel="noopener">https://osv.dev/vulnerability/GO-2022-1038</a> · <a href="https://osv.dev/vulnerability/GO-2022-1039" rel="noopener">https://osv.dev/vulnerability/GO-2022-1039</a> · <a href="https://groups.google.com/g/golang-announce/c/x49AQzIVX-s" rel="noopener">https://groups.google.com/g/golang-announce/c/x49AQzIVX-s</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-013dcba0845e2ea1</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-e4020edf7aba62cb"><summary><span class="sev sev-low">low</span><span class="t">No README</span><span class="c" id="dim-operability">operability · high confidence · fingerprint</span></summary>
+<div class="body">
+<p class="desc">There is no README explaining what the project is, how to build it and how to run it.</p>
+
+
+
+<p><strong>What to do:</strong> Add a README with purpose, setup, build, test and deployment instructions.</p>
+<p class="muted">Rule <code>no-readme</code></p>
+
+<p class="muted">ID <code>CSI-e4020edf7aba62cb</code></p>
+</div></details>
+
+
+
+<h2>What else can we tell you?</h2>
+<div class="card"><ol class="recs"><li><strong>Add the deployed URL</strong>: The repository shows the code. The deployed URL adds external exposure, TLS and security-header checks of what users actually reach.</li></ol></div>
+
+
+<h2>Capabilities</h2>
+<div class="tablewrap"><table><thead><tr><th>Capability</th><th>Status</th><th>Findings</th><th>Time</th><th>Network</th><th>Notes</th></tr></thead><tbody>
+<tr><td>AI-Generation Signals <span class="pill">experimental</span><br><code class="muted">ai-signals@0.1.0</code></td><td>ok</td><td>0</td><td>0ms</td><td>none</td><td>0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s)</td></tr>
+<tr><td>Architecture Mapper<br><code class="muted">architecture@0.1.0</code></td><td>ok</td><td>0</td><td>13ms</td><td>none</td><td>3 modules, 3 internal dependencies, 0 cycle(s), 1 external packages</td></tr>
+<tr><td>Code Health<br><code class="muted">code-health@0.1.0</code></td><td>ok</td><td>0</td><td>15ms</td><td>none</td><td>4 functions in 3 files; avg complexity 1.3, max 2; 0.0% duplicated; 0 hotspot(s)</td></tr>
+<tr><td>Dependency Inventory &amp; SBOM<br><code class="muted">dependencies@0.1.0</code></td><td>ok</td><td>0</td><td>0ms</td><td>none</td><td>3 packages (3 direct) from 1 manifest(s): Go 3<br><span class="muted">engine: OSV-SCALIBR (Apache-2.0)</span></td></tr>
+<tr><td>Project Fingerprint<br><code class="muted">fingerprint@0.1.0</code></td><td>ok</td><td>1</td><td>5ms</td><td>none</td><td>application/web-backend project in Go on Go 1.19</td></tr>
+<tr><td>Repository Inventory<br><code class="muted">inventory@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>6 files, 85 lines, 1 languages (listed via walk)</td></tr>
+<tr><td>Secret Scanner<br><code class="muted">secrets@0.1.0</code></td><td>ok</td><td>0</td><td>253ms</td><td>none</td><td>0 potential secret(s) in 6 scanned files<br><span class="muted">engine: Gitleaks (MIT)</span></td></tr>
+<tr><td>Technology &amp; Version Detector<br><code class="muted">tech-detect@0.1.0</code></td><td>ok</td><td>1</td><td>0ms</td><td>none</td><td>2 technologies detected: Gin</td></tr>
+<tr><td>Known Vulnerability Scanner<br><code class="muted">vulns@0.1.0</code></td><td>ok</td><td>3</td><td>2740ms</td><td>required</td><td>3 of 3 versioned packages have known vulnerabilities (107 advisories)<br><span class="muted">engine: OSV.dev (Apache-2.0 (service); advisory data CC-BY-4.0 and per-source licenses)</span></td></tr>
+</tbody></table></div>
+
+<h2>Data boundary</h2>
+<div class="card boundary"><p>Network requests were made to api.osv.dev by vulns. Source files were not uploaded; each disclosure states exactly what was sent.</p>
+<p><code>vulns</code> → GET api.osv.dev ×107</p><p><code>vulns</code> → POST api.osv.dev ×1</p>
+<p><strong>vulns:</strong> Sends package names, ecosystems and versions (never source code, file contents or paths) to api.osv.dev, the open vulnerability database operated by Google&#39;s Open Source Security Team.</p></div>
+
+<h2>Limitations</h2><ul><li>AI-Generation Signals: Experimental heuristics. These are indicators of unreviewed AI-generated output, not proof of AI use, and not a measure of quality on their own.</li><li>Architecture Mapper: Dependencies are derived from static import statements; dynamic imports, dependency injection and reflection are not visible.</li><li>Code Health: No git history available, so change hotspots could not be computed.</li><li>Repository Inventory: No git metadata was available, so .gitignore rules were not applied; built-in exclusions were used instead.</li><li>Secret Scanner: Only the current working tree was scanned. Secrets removed in earlier commits remain in git history and are not reported here.</li><li>Secret Scanner: Secrets were not verified against provider APIs, so some may be revoked, test or example values.</li><li>Technology &amp; Version Detector: End-of-life data is bundled (as of 2026-09-23) so detection works offline; newer releases or policy changes after that date are not reflected.</li><li>Known Vulnerability Scanner: Only dependencies with exact versions (from lockfiles) can be matched. Declared ranges without a lockfile are not checked.</li><li>Automated analysis reports what its analyzers can detect. It does not certify software as secure or defect-free.</li></ul>
+
+<footer>Generated by capybari 0136b2b · scan <code>scn_d147a9afc5156013</code> · Report schema 0.1 · Evidence before opinion: every finding lists its source, confidence and location.</footer>
+</main></body></html>

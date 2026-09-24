@@ -15,6 +15,8 @@
 | [Scoring methodology](methodology/scoring.md) | How dimension scores are computed from findings |
 | [Data boundary policy](policies/data-boundary.md) | What stays local, what may leave, and how it is disclosed |
 | [Licensing policy](policies/licensing.md) | Our licenses and rules for reusing open-source engines |
+| [Offline & air-gapped use](guides/offline.md) | What works without a network, and how to guarantee it |
+| [Example reports](examples/) | Real reports for the sample projects in capybari-fixtures (Markdown, JSON, HTML) |
 | [Contributing](guides/contributing.md) | Adding a capability, repository conventions, releases |
 
 ## Repositories

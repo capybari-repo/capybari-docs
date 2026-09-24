@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software X-Ray: node-express-legacy</title>
+<style>
+:root{--bg:#fbfaf9;--card:#ffffff;--ink:#121110;--ink2:#4c4640;--muted:#837c74;--line:#e3e0db;--accent:#0b8168;--accent-bg:#eafbf5;
+--crit:#b42318;--high:#bc591d;--med:#a16207;--low:#4f6f94;--info:#837c74;--good:#0b8168;--fair:#a16207;--poor:#b42318;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0908;--card:#171512;--ink:#f6f4f1;--ink2:#c4bdb4;--muted:#968f86;--line:#34302b;--accent:#35c09a;--accent-bg:rgba(53,192,154,.12);
+--crit:#f97066;--high:#edaa6b;--med:#facc15;--low:#8fb3dc;--info:#968f86;--good:#35c09a;--fair:#facc15;--poor:#f97066;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 InterVariable,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}a{color:var(--accent)}code,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+header .kicker{color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+h1{font-size:28px;margin:4px 0 8px;overflow-wrap:anywhere}h2{font-size:19px;margin:36px 0 12px}h3{font-size:15px;margin:0 0 6px}
+.headline{font-size:17px;color:var(--ink2);margin:0 0 12px}.meta{color:var(--muted);font-size:13px}.meta span{margin-right:14px;display:inline-block}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+a.score{display:block;text-decoration:none;color:inherit}a.score:hover{border-color:var(--accent)}
+.score .v{font-size:34px;font-weight:700;line-height:1.1}.score .n{font-weight:600}.score .s{color:var(--muted);font-size:12.5px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
+.good{color:var(--good)}.fair{color:var(--fair)}.poor{color:var(--poor)}.bg-good{background:var(--good)}.bg-fair{background:var(--fair)}.bg-poor{background:var(--poor)}
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}dl.facts dt{color:var(--muted)}dl.facts dd{margin:0;overflow-wrap:anywhere}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;font-size:13px}
+.counts span{margin-right:12px;font-weight:600}
+.sev{display:inline-block;min-width:68px;text-align:center;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff}
+.sev-critical{background:var(--crit)}.sev-high{background:var(--high)}.sev-medium{background:var(--med)}.sev-low{background:var(--low)}.sev-info{background:var(--info)}
+details.f{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:10px 14px}
+details.f summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;list-style:none}details.f summary::-webkit-details-marker{display:none}
+details.f summary .t{font-weight:600;flex:1 1 300px}details.f summary .c{color:var(--muted);font-size:12.5px}
+.body{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}.body p{margin:6px 0}.body p.desc{white-space:pre-line}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:4px 0 8px}
+.new{color:var(--accent);font-weight:700;font-size:12px}
+ol.recs{padding-left:20px}ol.recs li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.muted{color:var(--muted)}.pill{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--muted)}
+.boundary{border-left:4px solid var(--accent);background:var(--accent-bg)}
+footer{margin-top:48px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body><main>
+<header>
+<div class="kicker">Capybari Source Intelligence · Software X-Ray</div>
+<h1>node-express-legacy</h1>
+<p class="headline">node-express-legacy: 6 critical/high finding(s) in Security, Technology Currency. Start there.</p>
+<div class="meta"><span>repository · <code>capybari-fixtures/node-express-legacy</code></span><span>2026-09-24 04:52 UTC</span><span>1.8s</span><span>online</span><span>capybari 0136b2b</span></div>
+</header>
+
+
+<h2>Scores <span class="pill">0 = worst · 100 = best</span></h2>
+<div class="grid">
+<a class="card score" href="#dim-ai-signals" title="No issues found by ai-signals.">
+<div class="n">AI Dependability</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · low confidence</div><div class="s">No issues found by ai-signals.</div></a>
+<a class="card score" href="#dim-dependencies" title="No issues found by dependencies.">
+<div class="n">Dependency Hygiene</div><div class="v good">100<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:100%"></i></div>
+<div class="s">good · high confidence</div><div class="s">No issues found by dependencies.</div></a>
+<a class="card score" href="#dim-evolution" title="1 high, 1 low finding(s) by tech-detect.">
+<div class="n">Technology Currency</div><div class="v fair">75<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-fair" style="width:75%"></i></div>
+<div class="s">fair · high confidence</div><div class="s">1 high, 1 low finding(s) by tech-detect.</div></a>
+<a class="card score" href="#dim-maintainability" title="1 medium finding(s) by code-health, fingerprint.">
+<div class="n">Maintainability</div><div class="v good">91<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:91%"></i></div>
+<div class="s">good · high confidence</div><div class="s">1 medium finding(s) by code-health, fingerprint.</div></a>
+<a class="card score" href="#dim-operability" title="1 low finding(s) by fingerprint.">
+<div class="n">Operability</div><div class="v good">98<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:98%"></i></div>
+<div class="s">good · high confidence</div><div class="s">1 low finding(s) by fingerprint.</div></a>
+<a class="card score" href="#dim-security" title="5 high, 1 medium finding(s) by secrets, vulns.">
+<div class="n">Security</div><div class="v poor">38<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-poor" style="width:38%"></i></div>
+<div class="s">poor · high confidence</div><div class="s">5 high, 1 medium finding(s) by secrets, vulns.</div></a>
+<a class="card score" href="#dim-structure" title="1 low finding(s) by architecture.">
+<div class="n">Structure</div><div class="v good">98<span class="muted" style="font-size:15px">/100</span></div>
+<div class="bar"><i class="bg-good" style="width:98%"></i></div>
+<div class="s">good · high confidence</div><div class="s">1 low finding(s) by architecture.</div></a>
+
+</div>
+
+
+<h2>What is it?</h2>
+<div class="card"><dl class="facts">
+
+<dt>Project type</dt><dd>application, web-backend</dd>
+<dt>Primary language</dt><dd>JavaScript</dd>
+<dt>Package managers</dt><dd>npm</dd>
+<dt>Runtimes</dt><dd>Node.js 12.22.0; </dd>
+<dt>Entry points</dt><dd><code>Dockerfile</code> <code>src/server.js</code> </dd>
+<dt>Tests · CI · Containers</dt><dd>no · none · yes</dd>
+
+<dt>Size · Fingerprint</dt><dd>tiny · <code>fp_ced71e1056a9b8dc7247</code></dd>
+
+<dt>Files</dt><dd>10 files · 106 lines</dd>
+<dt>Languages</dt><dd class="chips"><span>JavaScript 100%</span></dd>
+
+<dt>Technologies</dt><dd class="chips"><span title="language">JavaScript</span><span title="runtime">Node.js 12.22.0</span><span title="web-framework">Express 4.16.0</span><span title="database">MySQL 2.18.1</span><span title="infrastructure">Docker</span><span title="library">Lodash 4.17.15</span><span title="library">Moment.js 2.29.1</span></dd>
+<dt>Dependencies</dt><dd>8 packages from 1 manifest(s) · 6 direct</dd>
+<dt>Architecture</dt><dd>3 modules · 3 dependencies · <strong class="poor">1 cycle(s)</strong></dd>
+</dl></div>
+
+<h2>Findings</h2>
+<p class="counts"><span class="poor">0 critical</span><span style="color:var(--high)">6 high</span><span class="fair">2 medium</span><span style="color:var(--low)">3 low</span><span class="muted">0 info</span></p>
+
+
+<details class="f" id="f-CSI-72e5af041d061823" open><summary><span class="sev sev-high">high</span><span class="t">Node.js 12 is end-of-life</span><span class="c" id="dim-evolution">evolution · high confidence · tech-detect</span></summary>
+<div class="body">
+<p class="desc">Node.js 12.22.0 (release line 12) reached end-of-life on 2022-04-30. It no longer receives security fixes, so known vulnerabilities in it stay unpatched.</p>
+<p><code>.nvmrc</code> — declares Node.js 12.22.0</p>
+
+<p><strong>Impact:</strong> Unpatched vulnerabilities and increasing incompatibility with current libraries and platforms. Security and compliance exposure that grows over time, and upgrades that get larger the longer they are postponed.</p>
+<p><strong>What to do:</strong> Upgrade Node.js to a supported release line (see https://endoflife.date/nodejs) and test the application against it.</p>
+<p class="muted">Rule <code>eol-node.js</code> · <a href="https://endoflife.date/nodejs" rel="noopener">https://endoflife.date/nodejs</a></p>
+<p class="muted">False positive? If the declared version is only a minimum (e.g. &gt;=12) and production runs a newer release, update the declaration to match.</p>
+<p class="muted">ID <code>CSI-72e5af041d061823</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-415b080a05e77b70" open><summary><span class="sev sev-high">high</span><span class="t">body-parser 1.18.2 has 2 known vulnerabilities</span><span class="c" id="dim-security">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">Transitive dependency. - GHSA-qwcr-r2fm-qrc7 (high, CVSS 7.5) CVE-2024-45590: body-parser vulnerable to denial of service when url encoding is enabled
+- GHSA-v422-hmwv-36x6 (low, CVSS 3.7) CVE-2026-12590: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement</p>
+<p><code>package-lock.json</code> — resolves body-parser 1.18.2</p>
+
+
+<p><strong>What to do:</strong> Upgrade body-parser to 1.20.6 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-qwcr-r2fm-qrc7</code> · <a href="https://osv.dev/vulnerability/GHSA-qwcr-r2fm-qrc7" rel="noopener">https://osv.dev/vulnerability/GHSA-qwcr-r2fm-qrc7</a> · <a href="https://osv.dev/vulnerability/GHSA-v422-hmwv-36x6" rel="noopener">https://osv.dev/vulnerability/GHSA-v422-hmwv-36x6</a> · <a href="https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7" rel="noopener">https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-415b080a05e77b70</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-fa93ef4fb80056c2" open><summary><span class="sev sev-high">high</span><span class="t">jsonwebtoken 8.5.1 has 3 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-8cf7-32gw-wr33 (high, CVSS 8.1) CVE-2022-23539: jsonwebtoken unrestricted key type could lead to legacy keys usage 
+- GHSA-qwph-4952-7xr6 (medium, CVSS 6.4) CVE-2022-23540: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()
+- GHSA-hjrf-2m68-5959 (medium, CVSS 5.0) CVE-2022-23541: jsonwebtoken&#39;s insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC</p>
+<p><code>package-lock.json</code> — resolves jsonwebtoken 8.5.1</p>
+
+
+<p><strong>What to do:</strong> Upgrade jsonwebtoken to 9.0.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-8cf7-32gw-wr33</code> · <a href="https://osv.dev/vulnerability/GHSA-8cf7-32gw-wr33" rel="noopener">https://osv.dev/vulnerability/GHSA-8cf7-32gw-wr33</a> · <a href="https://osv.dev/vulnerability/GHSA-qwph-4952-7xr6" rel="noopener">https://osv.dev/vulnerability/GHSA-qwph-4952-7xr6</a> · <a href="https://osv.dev/vulnerability/GHSA-hjrf-2m68-5959" rel="noopener">https://osv.dev/vulnerability/GHSA-hjrf-2m68-5959</a> · <a href="https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33" rel="noopener">https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-fa93ef4fb80056c2</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-9fb8137425ae67da"><summary><span class="sev sev-high">high</span><span class="t">lodash 4.17.15 has 6 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-r5fr-rjxr-66jc (high, CVSS 8.1) CVE-2021-23337, CVE-2026-4800: lodash vulnerable to Code Injection via `_.template` imports key names
+- GHSA-p6mc-m468-83gw (high, CVSS 7.4) CVE-2020-8203: Prototype Pollution in lodash
+- GHSA-35jh-r3h4-6jhm (high, CVSS 7.2) CVE-2021-23337, CVE-2026-4800: Command Injection in lodash
+- GHSA-f23m-r3pf-42rh (medium, CVSS 6.5) CVE-2025-13465, CVE-2026-2950: lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`
+- GHSA-xxjr-mmjv-4gpg (medium, CVSS 6.5) CVE-2025-13465, CVE-2026-2950: Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions
+- GHSA-29mw-wpgm-hmr9 (medium, CVSS 5.3) CVE-2020-28500: Regular Expression Denial of Service (ReDoS) in lodash</p>
+<p><code>package-lock.json</code> — resolves lodash 4.17.15</p>
+
+
+<p><strong>What to do:</strong> Upgrade lodash to 4.18.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-r5fr-rjxr-66jc</code> · <a href="https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc" rel="noopener">https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc</a> · <a href="https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw" rel="noopener">https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw</a> · <a href="https://osv.dev/vulnerability/GHSA-35jh-r3h4-6jhm" rel="noopener">https://osv.dev/vulnerability/GHSA-35jh-r3h4-6jhm</a> · <a href="https://osv.dev/vulnerability/GHSA-f23m-r3pf-42rh" rel="noopener">https://osv.dev/vulnerability/GHSA-f23m-r3pf-42rh</a> · <a href="https://osv.dev/vulnerability/GHSA-xxjr-mmjv-4gpg" rel="noopener">https://osv.dev/vulnerability/GHSA-xxjr-mmjv-4gpg</a> · <a href="https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc" rel="noopener">https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-9fb8137425ae67da</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-44d1d702ae6a3e6a"><summary><span class="sev sev-high">high</span><span class="t">moment 2.29.1 has 2 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-8hfj-j24r-96c4 (high, CVSS 7.5) CVE-2022-24785: Path Traversal: &#39;dir/../../filename&#39; in moment.locale
+- GHSA-wc69-rhjr-hc9g (high, CVSS 7.5) CVE-2022-31129: Moment.js vulnerable to Inefficient Regular Expression Complexity</p>
+<p><code>package-lock.json</code> — resolves moment 2.29.1</p>
+
+
+<p><strong>What to do:</strong> Upgrade moment to 2.29.4 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-8hfj-j24r-96c4</code> · <a href="https://osv.dev/vulnerability/GHSA-8hfj-j24r-96c4" rel="noopener">https://osv.dev/vulnerability/GHSA-8hfj-j24r-96c4</a> · <a href="https://osv.dev/vulnerability/GHSA-wc69-rhjr-hc9g" rel="noopener">https://osv.dev/vulnerability/GHSA-wc69-rhjr-hc9g</a> · <a href="https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4" rel="noopener">https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-44d1d702ae6a3e6a</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-e50428299df93fd0"><summary><span class="sev sev-high">high</span><span class="t">qs 6.5.1 has 3 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">Transitive dependency. - GHSA-hrpp-h998-j3pp (high, CVSS 7.5) CVE-2022-24999: qs vulnerable to Prototype Pollution
+- GHSA-4mjr-xmp4-gh2g (medium, CVSS 5.3) CVE-2026-82417: qs: Denial of Service via Attacker Controlled isBuffer
+- GHSA-6rw7-vpxm-498p (low, CVSS 3.7) CVE-2025-15284: qs&#39;s arrayLimit bypass in its bracket notation allows DoS via memory exhaustion</p>
+<p><code>package-lock.json</code> — resolves qs 6.5.1</p>
+
+
+<p><strong>What to do:</strong> Upgrade qs to 6.16.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-hrpp-h998-j3pp</code> · <a href="https://osv.dev/vulnerability/GHSA-hrpp-h998-j3pp" rel="noopener">https://osv.dev/vulnerability/GHSA-hrpp-h998-j3pp</a> · <a href="https://osv.dev/vulnerability/GHSA-4mjr-xmp4-gh2g" rel="noopener">https://osv.dev/vulnerability/GHSA-4mjr-xmp4-gh2g</a> · <a href="https://osv.dev/vulnerability/GHSA-6rw7-vpxm-498p" rel="noopener">https://osv.dev/vulnerability/GHSA-6rw7-vpxm-498p</a> · <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24999" rel="noopener">https://nvd.nist.gov/vuln/detail/CVE-2022-24999</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-e50428299df93fd0</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-6b33a192b168d9e6"><summary><span class="sev sev-medium">medium</span><span class="t">No automated tests found</span><span class="c" id="dim-maintainability">maintainability · high confidence · fingerprint</span></summary>
+<div class="body">
+<p class="desc">5 source files and no test files were found. Changes cannot be verified automatically, so every modification carries regression risk.</p>
+
+
+<p><strong>Impact:</strong> Regressions are found by users, not by CI. Each change is slower and riskier to ship.</p>
+<p><strong>What to do:</strong> Start with tests around the most-changed and most business-critical code paths, and run them in CI.</p>
+<p class="muted">Rule <code>no-tests</code></p>
+<p class="muted">False positive? Tests stored outside the repository, or named without common test conventions, are not detected.</p>
+<p class="muted">ID <code>CSI-6b33a192b168d9e6</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-c27328c722edc5d4"><summary><span class="sev sev-medium">medium</span><span class="t">express 4.16.0 has 2 known vulnerabilities</span><span class="c">security · high confidence · vulns</span></summary>
+<div class="body">
+<p class="desc">- GHSA-rv95-896h-c2vc (medium, CVSS 6.1) CVE-2024-29041: Express.js Open Redirect in malformed URLs
+- GHSA-qw6h-vgh9-j6wx (medium, CVSS 5.0) CVE-2024-43796: express vulnerable to XSS via response.redirect()</p>
+<p><code>package-lock.json</code> — resolves express 4.16.0</p>
+
+
+<p><strong>What to do:</strong> Upgrade express to 4.20.0 or later and re-run the tests.</p>
+<p class="muted">Rule <code>GHSA-rv95-896h-c2vc</code> · <a href="https://osv.dev/vulnerability/GHSA-rv95-896h-c2vc" rel="noopener">https://osv.dev/vulnerability/GHSA-rv95-896h-c2vc</a> · <a href="https://osv.dev/vulnerability/GHSA-qw6h-vgh9-j6wx" rel="noopener">https://osv.dev/vulnerability/GHSA-qw6h-vgh9-j6wx</a> · <a href="https://github.com/expressjs/express/security/advisories/GHSA-rv95-896h-c2vc" rel="noopener">https://github.com/expressjs/express/security/advisories/GHSA-rv95-896h-c2vc</a></p>
+<p class="muted">False positive? Advisories match on version only. Check whether the vulnerable function is reachable in this application before deprioritising.</p>
+<p class="muted">ID <code>CSI-c27328c722edc5d4</code> · engine OSV.dev</p>
+</div></details>
+
+<details class="f" id="f-CSI-57c2a4e841593d6d"><summary><span class="sev sev-low">low</span><span class="t">Moment.js is in maintenance mode</span><span class="c">evolution · high confidence · tech-detect</span></summary>
+<div class="body">
+<p class="desc">The Moment.js maintainers consider it a legacy project and recommend Luxon, date-fns, Day.js or the Temporal API for new work.</p>
+
+
+
+<p><strong>What to do:</strong> Plan a gradual migration to a maintained date library.</p>
+<p class="muted">Rule <code>deprecated-moment</code> · <a href="https://momentjs.com/docs/#/-project-status/" rel="noopener">https://momentjs.com/docs/#/-project-status/</a></p>
+
+<p class="muted">ID <code>CSI-57c2a4e841593d6d</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-e6a1f31c964f99b2"><summary><span class="sev sev-low">low</span><span class="t">Circular dependency between 2 modules</span><span class="c" id="dim-structure">structure · high confidence · architecture</span></summary>
+<div class="body">
+<p class="desc">src/utils/dates.js, src/utils/log.js depend on each other in a cycle. None of them can be changed, tested or extracted in isolation.</p>
+<p><code>src/utils/dates.js:2</code> — src/utils/dates.js → src/utils/log.js</p><p><code>src/utils/log.js:1</code> — src/utils/log.js → src/utils/dates.js</p>
+
+<p><strong>Impact:</strong> Changes ripple through every module in the cycle; initialisation order bugs in JavaScript and Python.</p>
+<p><strong>What to do:</strong> Break the cycle by moving the shared piece into a separate module both depend on, or invert one dependency through an interface or callback.</p>
+<p class="muted">Rule <code>dependency-cycle</code></p>
+
+<p class="muted">ID <code>CSI-e6a1f31c964f99b2</code></p>
+</div></details>
+
+<details class="f" id="f-CSI-dada79d1970fc26f"><summary><span class="sev sev-low">low</span><span class="t">No CI/CD configuration found</span><span class="c" id="dim-operability">operability · medium confidence · fingerprint</span></summary>
+<div class="body">
+<p class="desc">No pipeline definition (GitHub Actions, GitLab CI, Jenkins, CircleCI, Azure Pipelines, …) was found, so builds and tests are presumably run by hand.</p>
+
+
+
+<p><strong>What to do:</strong> Add a pipeline that builds, tests and scans every change.</p>
+<p class="muted">Rule <code>no-ci</code></p>
+<p class="muted">False positive? CI may be configured outside the repository (e.g. in a separate pipelines repository or a hosted service UI).</p>
+<p class="muted">ID <code>CSI-dada79d1970fc26f</code></p>
+</div></details>
+
+
+
+<h2>What else can we tell you?</h2>
+<div class="card"><ol class="recs"><li><strong>Add the deployed URL</strong>: The repository shows the code. The deployed URL adds external exposure, TLS and security-header checks of what users actually reach.</li></ol></div>
+
+
+<h2>Capabilities</h2>
+<div class="tablewrap"><table><thead><tr><th>Capability</th><th>Status</th><th>Findings</th><th>Time</th><th>Network</th><th>Notes</th></tr></thead><tbody>
+<tr><td>AI-Generation Signals <span class="pill">experimental</span><br><code class="muted">ai-signals@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s)</td></tr>
+<tr><td>Architecture Mapper<br><code class="muted">architecture@0.1.0</code></td><td>ok</td><td>1</td><td>16ms</td><td>none</td><td>3 modules, 3 internal dependencies, 1 cycle(s), 4 external packages</td></tr>
+<tr><td>Code Health<br><code class="muted">code-health@0.1.0</code></td><td>ok</td><td>0</td><td>12ms</td><td>none</td><td>4 functions in 5 files; avg complexity 1.3, max 2; 0.0% duplicated; 0 hotspot(s)</td></tr>
+<tr><td>Dependency Inventory &amp; SBOM<br><code class="muted">dependencies@0.1.0</code></td><td>ok</td><td>0</td><td>16ms</td><td>none</td><td>8 packages (6 direct) from 1 manifest(s): npm 8<br><span class="muted">engine: OSV-SCALIBR (Apache-2.0)</span></td></tr>
+<tr><td>Project Fingerprint<br><code class="muted">fingerprint@0.1.0</code></td><td>ok</td><td>2</td><td>0ms</td><td>none</td><td>application/web-backend project in JavaScript on Node.js 12.22.0</td></tr>
+<tr><td>Repository Inventory<br><code class="muted">inventory@0.1.0</code></td><td>ok</td><td>0</td><td>1ms</td><td>none</td><td>10 files, 106 lines, 1 languages (listed via walk)</td></tr>
+<tr><td>Secret Scanner<br><code class="muted">secrets@0.1.0</code></td><td>ok</td><td>0</td><td>526ms</td><td>none</td><td>0 potential secret(s) in 9 scanned files<br><span class="muted">engine: Gitleaks (MIT)</span></td></tr>
+<tr><td>Technology &amp; Version Detector<br><code class="muted">tech-detect@0.1.0</code></td><td>ok</td><td>2</td><td>2ms</td><td>none</td><td>7 technologies detected: Node.js, Express, MySQL, Docker, Lodash, Moment.js</td></tr>
+<tr><td>Known Vulnerability Scanner<br><code class="muted">vulns@0.1.0</code></td><td>ok</td><td>6</td><td>1237ms</td><td>required</td><td>6 of 8 versioned packages have known vulnerabilities (18 advisories)<br><span class="muted">engine: OSV.dev (Apache-2.0 (service); advisory data CC-BY-4.0 and per-source licenses)</span></td></tr>
+</tbody></table></div>
+
+<h2>Data boundary</h2>
+<div class="card boundary"><p>Network requests were made to api.osv.dev by vulns. Source files were not uploaded; each disclosure states exactly what was sent.</p>
+<p><code>vulns</code> → GET api.osv.dev ×18</p><p><code>vulns</code> → POST api.osv.dev ×1</p>
+<p><strong>vulns:</strong> Sends package names, ecosystems and versions (never source code, file contents or paths) to api.osv.dev, the open vulnerability database operated by Google&#39;s Open Source Security Team.</p></div>
+
+<h2>Limitations</h2><ul><li>AI-Generation Signals: Experimental heuristics. These are indicators of unreviewed AI-generated output, not proof of AI use, and not a measure of quality on their own.</li><li>Architecture Mapper: Dependencies are derived from static import statements; dynamic imports, dependency injection and reflection are not visible.</li><li>Code Health: Function metrics for JavaScript use lexical heuristics, not a full parser; small deviations from compiler-accurate values are expected.</li><li>Code Health: No git history available, so change hotspots could not be computed.</li><li>Repository Inventory: No git metadata was available, so .gitignore rules were not applied; built-in exclusions were used instead.</li><li>Secret Scanner: Only the current working tree was scanned. Secrets removed in earlier commits remain in git history and are not reported here.</li><li>Secret Scanner: Secrets were not verified against provider APIs, so some may be revoked, test or example values.</li><li>Technology &amp; Version Detector: End-of-life data is bundled (as of 2026-09-23) so detection works offline; newer releases or policy changes after that date are not reflected.</li><li>Known Vulnerability Scanner: Only dependencies with exact versions (from lockfiles) can be matched. Declared ranges without a lockfile are not checked.</li><li>Automated analysis reports what its analyzers can detect. It does not certify software as secure or defect-free.</li></ul>
+
+<footer>Generated by capybari 0136b2b · scan <code>scn_409143bf6f59dbab</code> · Report schema 0.1 · Evidence before opinion: every finding lists its source, confidence and location.</footer>
+</main></body></html>
