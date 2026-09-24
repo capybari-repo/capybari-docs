@@ -14,7 +14,7 @@ A capability declares the dimensions it contributes to (`scores:` in `capability
 
 For each dimension:
 
-1. Take the findings in that dimension produced by the contributing capabilities that ran.
+1. Take every finding in that dimension, whichever capability produced it. For example, the fingerprint's "no tests" finding counts toward Maintainability.
 2. Sum penalty points: `severity points × confidence weight`.
 
    | Severity | Points | | Confidence | Weight |
@@ -40,7 +40,7 @@ Ratings: **good** ≥ 80, **fair** 55–79, **poor** < 55.
 ## Dimensions
 
 <a id="security"></a>**Security:** secrets, known vulnerabilities, website security configuration.
-<a id="dependencies"></a>**Dependency Health:** dependency hygiene (lockfiles, pinning, sprawl).
+<a id="dependencies"></a>**Dependency Hygiene:** lockfiles, pinning, registry provenance and version sprawl. Known vulnerabilities in dependencies count toward **Security**.
 <a id="maintainability"></a>**Maintainability:** complexity, size, duplication, markers, repository hygiene.
 <a id="structure"></a>**Structure:** architecture: cycles, coupling, layering.
 <a id="evolution"></a>**Technology Currency:** end-of-life and outdated runtimes and frameworks.
