@@ -3,7 +3,7 @@
 > python-flask-app: 5 critical/high finding(s) in Security, Technology Currency. Start there.
 
 - **Target:** repository (`capybari-fixtures/python-flask-app`)
-- **Scan:** `scn_f77c32354113c16f` · 2026-09-24 04:52 UTC · 1.3s
+- **Scan:** `scn_d78ef6b6a67a122e` · 2026-09-24 05:02 UTC · 1.4s
 - **Tool:** capybari 0136b2b
 - **Mode:** online
 
@@ -185,15 +185,15 @@ There is no README explaining what the project is, how to build it and how to ru
 
 | Capability | Status | Findings | Time | Network | Notes |
 |---|---|---:|---:|---|---|
-| AI-Generation Signals _(experimental)_ `ai-signals@0.1.0` | ok | 0 | 0ms | none | 0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s) |
-| Architecture Mapper `architecture@0.1.0` | ok | 0 | 1ms | none | 1 modules, 0 internal dependencies, 0 cycle(s), 0 external packages |
-| Code Health `code-health@0.1.0` | ok | 0 | 3ms | none | 4 functions in 3 files; avg complexity 2.5, max 6; 0.0% duplicated; 0 hotspot(s) |
-| Dependency Inventory & SBOM `dependencies@0.1.0` | ok | 0 | 1ms | none | 5 packages (5 direct) from 1 manifest(s): PyPI 5 |
-| Project Fingerprint `fingerprint@0.1.0` | ok | 1 | 2ms | none | application/web-backend project in Python on Python 3.7.9 |
+| AI-Generation Signals _(experimental)_ `ai-signals@0.1.0` | ok | 0 | 2ms | none | 0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s) |
+| Architecture Mapper `architecture@0.1.0` | ok | 0 | 6ms | none | 1 modules, 0 internal dependencies, 0 cycle(s), 0 external packages |
+| Code Health `code-health@0.1.0` | ok | 0 | 6ms | none | 4 functions in 3 files; avg complexity 2.5, max 6; 0.0% duplicated; 0 hotspot(s) |
+| Dependency Inventory & SBOM `dependencies@0.1.0` | ok | 0 | 7ms | none | 5 packages (5 direct) from 1 manifest(s): PyPI 5 |
+| Project Fingerprint `fingerprint@0.1.0` | ok | 1 | 11ms | none | application/web-backend project in Python on Python 3.7.9 |
 | Repository Inventory `inventory@0.1.0` | ok | 0 | 1ms | none | 8 files, 74 lines, 1 languages (listed via walk) |
-| Secret Scanner `secrets@0.1.0` | ok | 0 | 304ms | none | 0 potential secret(s) in 8 scanned files |
-| Technology & Version Detector `tech-detect@0.1.0` | ok | 2 | 0ms | none | 7 technologies detected: Flask, SQLAlchemy, Gunicorn, Docker, Jinja, Requests |
-| Known Vulnerability Scanner `vulns@0.1.0` | ok | 4 | 1038ms | required | 4 of 5 versioned packages have known vulnerabilities (30 advisories) |
+| Secret Scanner `secrets@0.1.0` | ok | 0 | 267ms | none | 0 potential secret(s) in 8 scanned files |
+| Technology & Version Detector `tech-detect@0.1.0` | ok | 2 | 1ms | none | 7 technologies detected: Flask, SQLAlchemy, Gunicorn, Docker, Jinja, Requests |
+| Known Vulnerability Scanner `vulns@0.1.0` | ok | 4 | 1074ms | required | 4 of 5 versioned packages have known vulnerabilities (30 advisories) |
 
 ## Artifacts
 

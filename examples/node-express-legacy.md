@@ -3,7 +3,7 @@
 > node-express-legacy: 6 critical/high finding(s) in Security, Technology Currency. Start there.
 
 - **Target:** repository (`capybari-fixtures/node-express-legacy`)
-- **Scan:** `scn_409143bf6f59dbab` · 2026-09-24 04:52 UTC · 1.8s
+- **Scan:** `scn_d31c674c1310bacb` · 2026-09-24 05:02 UTC · 1.0s
 - **Tool:** capybari 0136b2b
 - **Mode:** online
 
@@ -234,15 +234,15 @@ _False positive?_ CI may be configured outside the repository (e.g. in a separat
 
 | Capability | Status | Findings | Time | Network | Notes |
 |---|---|---:|---:|---|---|
-| AI-Generation Signals _(experimental)_ `ai-signals@0.1.0` | ok | 0 | 1ms | none | 0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s) |
-| Architecture Mapper `architecture@0.1.0` | ok | 1 | 16ms | none | 3 modules, 3 internal dependencies, 1 cycle(s), 4 external packages |
-| Code Health `code-health@0.1.0` | ok | 0 | 12ms | none | 4 functions in 5 files; avg complexity 1.3, max 2; 0.0% duplicated; 0 hotspot(s) |
-| Dependency Inventory & SBOM `dependencies@0.1.0` | ok | 0 | 16ms | none | 8 packages (6 direct) from 1 manifest(s): npm 8 |
-| Project Fingerprint `fingerprint@0.1.0` | ok | 2 | 0ms | none | application/web-backend project in JavaScript on Node.js 12.22.0 |
-| Repository Inventory `inventory@0.1.0` | ok | 0 | 1ms | none | 10 files, 106 lines, 1 languages (listed via walk) |
-| Secret Scanner `secrets@0.1.0` | ok | 0 | 526ms | none | 0 potential secret(s) in 9 scanned files |
-| Technology & Version Detector `tech-detect@0.1.0` | ok | 2 | 2ms | none | 7 technologies detected: Node.js, Express, MySQL, Docker, Lodash, Moment.js |
-| Known Vulnerability Scanner `vulns@0.1.0` | ok | 6 | 1237ms | required | 6 of 8 versioned packages have known vulnerabilities (18 advisories) |
+| AI-Generation Signals _(experimental)_ `ai-signals@0.1.0` | ok | 0 | 2ms | none | 0 AI assistant config(s), 0 builder marker(s), 0 scaffolding comment(s) |
+| Architecture Mapper `architecture@0.1.0` | ok | 1 | 4ms | none | 3 modules, 3 internal dependencies, 1 cycle(s), 4 external packages |
+| Code Health `code-health@0.1.0` | ok | 0 | 1ms | none | 4 functions in 5 files; avg complexity 1.3, max 2; 0.0% duplicated; 0 hotspot(s) |
+| Dependency Inventory & SBOM `dependencies@0.1.0` | ok | 0 | 2ms | none | 8 packages (6 direct) from 1 manifest(s): npm 8 |
+| Project Fingerprint `fingerprint@0.1.0` | ok | 2 | 1ms | none | application/web-backend project in JavaScript on Node.js 12.22.0 |
+| Repository Inventory `inventory@0.1.0` | ok | 0 | 3ms | none | 10 files, 106 lines, 1 languages (listed via walk) |
+| Secret Scanner `secrets@0.1.0` | ok | 0 | 230ms | none | 0 potential secret(s) in 9 scanned files |
+| Technology & Version Detector `tech-detect@0.1.0` | ok | 2 | 0ms | none | 7 technologies detected: Node.js, Express, MySQL, Docker, Lodash, Moment.js |
+| Known Vulnerability Scanner `vulns@0.1.0` | ok | 6 | 806ms | required | 6 of 8 versioned packages have known vulnerabilities (18 advisories) |
 
 ## Artifacts
 
