@@ -12,7 +12,7 @@
 
 1. Create the repository from the template and run `scripts/rename.sh`.
 2. Implement it, add fixtures and golden tests, and write `docs/methodology.md`.
-3. Add it to `capybari-cli/internal/registry/registry.go` and to [capabilities/README.md](../capabilities/README.md).
+3. Add it to `capybari-cli/registry/registry.go` and to [capabilities/README.md](../capabilities/README.md).
 
 Analyzer libraries depend **only** on `capybari-core`. A standalone `cmd/` may import upstream analyzers it needs evidence from.
 
