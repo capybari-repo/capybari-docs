@@ -16,4 +16,4 @@ Users must always know what is local, what leaves their environment, what extern
 
 ## Website scanning
 
-By default, website capabilities are **passive**: they fetch the front page and its plain-http variant, the way a browser would. Active probes, such as requesting well-known sensitive paths, run only with `--active`, which the user sets only for sites they own or are authorised to test.
+By default, website capabilities are **passive**: they fetch the front page, its plain-http variant, `robots.txt`, `/.well-known/security.txt`, and **at most 5 same-site pages linked from the front page**, one at a time. `robots.txt` is honoured, and login, logout, admin, cart and file links are never followed, the way a careful reader would browse. Active probes, such as requesting well-known sensitive paths, run only with `--active`, which the user sets only for sites they own or are authorised to test.
