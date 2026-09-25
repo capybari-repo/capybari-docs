@@ -33,6 +33,8 @@ Analyzers may set the impact themselves (`capybari-analyzer-commerce` does). Oth
 | vulnerable-library (websites) | critical | low |
 | cookie | — | medium |
 | end-of-life, deprecated-library, maintenance-signal, missing-tests, missing-ci, missing-license, placeholder-content | — | low |
+| unmaintained-dependency, deprecated-package, inactive-repository, single-maintainer, stale-content, linked-repo-inactive, linked-repo-archived, missing-docs | — | low |
+| license-restriction | set by `longevity`: non-commercial blocks; source-available, AGPL, GPL raise support cost | |
 | runtime, missing-lockfile, swallowed-errors, scaffold-code, placeholder-config, template-leftover, ai-boilerplate | — | medium |
 | hotspot, complexity, dependency-cycle | — | high |
 | security-header, disclosure | — | — (cosmetic) |
@@ -45,8 +47,8 @@ Informational findings are always cosmetic.
 Each finding answers at most one question:
 
 - **Trust:** HTTPS/TLS, credentials and exposures, dependency and library vulnerabilities, cookies and headers, and the Trust & Commerce findings (insecure credentials, missing legal/contact/refund).
-- **Finish:** AI-generation and unfinished-code findings, coming-soon and stub pricing pages. Findings about AI *use* (builder, assistant config) answer none: using AI is not a concern.
-- **Risk:** Technology Currency, Dependency Hygiene, Maintainability, Structure, Operability and Change Safety findings.
+- **Finish:** AI-generation and unfinished-code findings, coming-soon and stub pricing pages, no documentation for a site with accounts. Findings about AI *use* (builder, assistant config) answer none: using AI is not a concern.
+- **Risk:** Technology Currency, Dependency Hygiene, Maintainability, Structure, Operability and Change Safety findings, including inactive repositories, single maintainers, restrictive licenses, deprecated or unmaintained dependencies, stale content and inactive linked repositories.
 
 Cosmetic findings never appear as reasons; they are counted.
 
@@ -62,16 +64,17 @@ Cosmetic findings never appear as reasons; they are counted.
 - **poor** if a finding blocks purchase (e.g. coming soon), placeholder content is live, Unfinished Risk ≥ 50, or Looks Shipped < 35;
 - **fair** if a finding raises support cost, Unfinished Risk ≥ 20, or Looks Shipped < 65;
 - otherwise **good**.
-- Reasons name the score when it sets the level ("Looks Shipped 58/100"), and list what is not yet in place from the Looks Shipped checklist.
-- Covered by: `ai-signals`, `commerce`.
+- Reasons list what is not yet in place from the Looks Shipped checklist, and name the score when it sets the level ("Looks Shipped 58/100").
+- Positives: documentation, changelog, status page and support community (from `completeness`).
+- Covered by: `ai-signals`, `commerce`, `completeness`.
 
 ### Risk
 
 - **poor** if any finding blocks purchase, or any support-cost finding is high or critical;
 - **fair** if any finding raises support cost;
 - otherwise **good**.
-- Positives: no end-of-life components; for repositories, tests and CI present.
-- Covered by: `web-tech` (websites); `tech-detect`, `dependencies`, `fingerprint`, `code-health` (repositories).
+- Positives: content updated within the last year (with its source), a linked repository pushed within 6 months; for repositories, commits in the last year, a bus factor of 2 or more, a release within the last year, a permissive license, tests and CI present; no end-of-life components.
+- Covered by: `web-tech`, `completeness` (websites); `longevity`, `tech-detect`, `dependencies`, `vulns`, `fingerprint`, `code-health` (repositories).
 
 ## Not checked
 
@@ -93,5 +96,8 @@ Always listed: what a website scan cannot see (code, tests, dependencies; pages 
 | dackapps.com | No trust blockers · Looks shipped · Low regret risk |
 | fordle.fun | Trust gaps (accounts, no privacy policy) · Partly finished · Low regret risk |
 | netfilterpro.com | Trust gaps (vulnerable jQuery, no privacy policy) · Looks shipped · Some aging risk (jQuery 2 end-of-life, copyright 2020) |
+
+| expressjs/express (repository) | No trust blockers · Looks shipped · Some aging risk (15 of 44 direct dependencies without a release in 2+ years; Node 18 end-of-life); positives: active 12 of 12 months, bus factor 11, release v5.2.1 |
+| left-pad (repository) | No trust blockers · Looks shipped · High regret risk (no commits for 90 months) |
 
 \* The local test apps were served over plain HTTP.
