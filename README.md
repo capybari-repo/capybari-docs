@@ -12,6 +12,7 @@
 |---|---|
 | [Getting started](guides/getting-started.md) | Install, first scan, reading the report |
 | [Capabilities](capabilities/README.md) | What each capability detects, its inputs, and its network/AI requirements |
+| [Verdict methodology](methodology/verdict.md) | The buyer verdict (Trust / Finish / Risk) and buyer impact of findings |
 | [Scoring methodology](methodology/scoring.md) | How dimension scores are computed from findings |
 | [Data boundary policy](policies/data-boundary.md) | What stays local, what may leave, and how it is disclosed |
 | [Licensing policy](policies/licensing.md) | Our licenses and rules for reusing open-source engines |

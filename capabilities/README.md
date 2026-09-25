@@ -15,8 +15,9 @@ Run `capybari capabilities` for the live list from your installed version.
 | `architecture` | Architecture Mapper | repository | none | Structure | [capybari-analyzer-architecture](https://github.com/capybari-repo/capybari-analyzer-architecture) |
 | `web-tech` | Website Technology Detector | website | optional: `api.osv.dev` (library names + versions) | Technology Currency | [capybari-analyzer-web-tech](https://github.com/capybari-repo/capybari-analyzer-web-tech) |
 | `web-security` | Website Security Check | website | the scanned site only | Security | [capybari-analyzer-web-security](https://github.com/capybari-repo/capybari-analyzer-web-security) |
-| `ai-signals` | AI-Generation Signals *(experimental)* | website, repository | none | feeds the AI Slop Score | [capybari-analyzer-ai-signals](https://github.com/capybari-repo/capybari-analyzer-ai-signals) |
+| `commerce` | Trust & Commerce Readiness *(experimental)* | website | none | feeds the verdict (Trust, Finish) | [capybari-analyzer-commerce](https://github.com/capybari-repo/capybari-analyzer-commerce) |
+| `ai-signals` | AI-Generation Signals *(experimental)* | website, repository | none | feeds Unfinished Risk and Looks Shipped | [capybari-analyzer-ai-signals](https://github.com/capybari-repo/capybari-analyzer-ai-signals) |
 
 Each capability's repository contains `docs/methodology.md`: what it detects, how, severities, and known false positives.
 
-**AI Slop Score** is a composite meter (0 = clean, 100 = pure slop) computed by capybari-core from ai-signals, secrets, vulns, dependencies, fingerprint, code-health, architecture, web-security and web-tech findings. See [scoring](../methodology/scoring.md#ai-slop).
+**Unfinished Risk** (formerly AI Slop Score) is a composite meter (0 = clean, 100 = unreviewed and unfinished) computed by capybari-core from ai-signals, secrets, vulns, dependencies, fingerprint, code-health, architecture, web-security and web-tech findings. See [scoring](../methodology/scoring.md#ai-slop).

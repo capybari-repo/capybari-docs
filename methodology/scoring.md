@@ -6,9 +6,11 @@ Scores are **navigation, not decoration**. Each one links to the findings behind
 
 Every **health score** (Security, Maintainability, …) runs **0 (worst) to 100 (best)**.
 
-The one exception is the **AI Slop Score**, a *meter*: **0 = clean, 100 = pure slop (higher is worse)**. Because it runs the other way, it is always shown with its level (Low / Moderate / High slop) and the words "higher = more slop", and reports mark it with `"direction": "higher-is-worse"`.
+The one exception is **Unfinished Risk** (formerly the AI Slop Score; score ID `ai-slop`), a *meter*: **0 = clean, 100 = unreviewed and unfinished (higher is worse)**. Because it runs the other way, it is always shown with its level (Low / Moderate / High unfinished risk) and the words "higher = riskier", and reports mark it with `"direction": "higher-is-worse"`.
 
-**Build Depth** runs the normal way (0 = shallow, 100 = deep build) and is shown with its level and the words "higher = more care".
+Reports lead with a buyer **verdict** (Trust / Finish / Risk) built from these scores and the findings; see [verdict.md](verdict.md).
+
+**Looks Shipped** (formerly Build Depth; score ID `build-depth`) runs the normal way (0 = thin, 100 = looks shipped) and is shown with its level and the words "higher = more finished".
 
 ## Which scores appear
 
@@ -49,7 +51,7 @@ Ratings: **good** ≥ 80, **fair** 55–79, **poor** < 55.
 <a id="structure"></a>**Structure:** architecture: cycles, coupling, layering.
 <a id="evolution"></a>**Technology Currency:** end-of-life and outdated runtimes and frameworks.
 <a id="ai-slop"></a>
-## AI Slop Score (composite meter)
+## Unfinished Risk (composite meter; formerly AI Slop Score)
 
 **Question it answers:** *does this look like AI-generated software or content that nobody properly reviewed?* It is not a measure of whether AI was used: using AI well scores low.
 
@@ -68,7 +70,7 @@ It is computed by `capybari-core` from findings of several capabilities, in five
 1. Each finding contributes `severity points × confidence weight × category weight` (the same severity points and confidence weights as above).
 2. Each group is capped (see the table), so one area cannot decide the whole score.
 3. `slop = 100 × P / (P + 40)`, rounded, where P is the sum of the group points. P = 40 reads 50.
-4. Levels: **Low slop** 0–19 · **Moderate slop** 20–49 · **High slop** 50–100.
+4. Levels: **Low unfinished risk** 0–19 · **Moderate unfinished risk** 20–49 · **High unfinished risk** 50–100.
 
 **Calibration (September 2026):**
 
@@ -82,13 +84,14 @@ It is computed by `capybari-core` from findings of several capabilities, in five
 
 **Confidence:** medium when every group that applies to the target was assessed, and low when any was not (for example a focused scan, or a website where only public signals exist).
 
-**When no score is shown:** if `ai-signals` could not assess the target, for example a site with under 100 words of visible text and no unambiguous sign, the AI Slop Score is **not shown** rather than reported as 0. Sites with 100–149 words, or shorter sites showing a placeholder or generator default, are assessed with the unambiguous checks only; the stock-phrase density check needs 150 words.
+**When no score is shown:** if `ai-signals` could not assess the target, for example a site with under 100 words of visible text and no unambiguous sign, Unfinished Risk is **not shown** rather than reported as 0. Sites with 100–149 words, or shorter sites showing a placeholder or generator default, are assessed with the unambiguous checks only; the stock-phrase density check needs 150 words.
 
-**Basis and drill-down:** every AI Slop Score lists each group's findings, points and whether it was assessed. Clicking the score shows exactly the findings that make it up.
+**Basis and drill-down:** every Unfinished Risk score lists each group's findings, points and whether it was assessed. Clicking the score shows exactly the findings that make it up.
 
-## Build Depth (websites)
+<a id="build-depth"></a>
+## Looks Shipped (websites; formerly Build Depth)
 
-The AI Slop Score counts what is wrong; it cannot tell a carefully built AI-assisted site from a clean but thin one. **Build Depth** is its counterpart: it credits signs of effort, read only from the pages the Website Snapshot already fetched (no extra requests). AI use itself is never penalised.
+Unfinished Risk counts what is wrong; it cannot tell a carefully built AI-assisted site from a clean but thin one. **Looks Shipped** is its counterpart: it credits signs of effort, read only from the pages the Website Snapshot already fetched (no extra requests). AI use itself is never penalised.
 
 | Group | Max | Earned by |
 |---|---:|---|
@@ -99,22 +102,22 @@ The AI Slop Score counts what is wrong; it cannot tell a carefully built AI-assi
 | Trust pages | 10 | privacy/terms link 4 · about/team link 3 · real contact details (mailto/tel, not example) 3 |
 | Extra craft | 15 | structured data 4 · more than one language (hreflang) 4 · web app manifest 2 · every image has alt text and every form field a label 3 · page landmarks 2 |
 
-`depth = sum of points` (0–100). Levels: **Shallow build** 0–34 · **Moderate depth** 35–64 · **Deep build** 65–100. Confidence is always low: these are heuristics, and only public pages are seen (an app behind a login shows little).
+`depth = sum of points` (0–100). Levels: **Thin build** 0–34 · **Partly shipped** 35–64 · **Looks shipped** 65–100. The web app shows it as a checklist (✓ / ◐ / ✗ per item) a buyer can skim in 20 seconds. Confidence is always low: these are heuristics, and only public pages are seen (an app behind a login shows little).
 
 The basis lists, per group, what the site has and what it could add, so the score doubles as a to-do list.
 
 **Calibration (September 2026):**
 
-| Target | AI Slop | Build Depth |
+| Target | Unfinished Risk | Looks Shipped |
 |---|---|---|
-| local test app: one prompt, static (default Vite title and favicon, lorem ipsum, placeholder contacts) | 48 · Moderate | 11 · Shallow |
-| local test app: one prompt, JavaScript-built (Lovable defaults, stock testimonials) | 48 · Moderate | 19 · Shallow |
-| local test app: iterated (4 pages, specific copy, metadata, 404, sitemap) | 14 · Low | 79 · Deep |
-| local test app: crafted (above + second language, structured data, manifest, accessible forms) | 13 · Low | 89 · Deep |
+| local test app: one prompt, static (default Vite title and favicon, lorem ipsum, placeholder contacts) | 48 · Moderate | 11 · Thin |
+| local test app: one prompt, JavaScript-built (Lovable defaults, stock testimonials) | 48 · Moderate | 19 · Thin |
+| local test app: iterated (4 pages, specific copy, metadata, 404, sitemap) | 14 · Low | 79 · Looks shipped |
+| local test app: crafted (above + second language, structured data, manifest, accessible forms) | 13 · Low | 89 · Looks shipped |
 | capybari.com · dackapps.com · dack3.netfilterpro.com | 0 · 1 · 1 | 87 · 81 · 77 |
 | netfilterpro.com · fordle.fun · news.livegrid.live | 7 · 1 · 1 | 66 · 58 · 53 |
 
-(The test apps' AI Slop includes "no HTTPS", as they were served locally over plain HTTP.)
+(The test apps' Unfinished Risk includes "no HTTPS", as they were served locally over plain HTTP.)
 
 ## Changing the method
 
