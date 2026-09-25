@@ -6,11 +6,22 @@ Every report opens with a **verdict**: three questions a buyer asks before trust
 |---|---|---|
 | **Trust** | Can I trust it with my data, money or account? | Commerce-ready / No trust blockers · Trust gaps · Trust blockers found |
 | **Finish** | Is it finished enough to rely on, or still a demo? | Looks shipped · Partly finished · Unfinished |
-| **Risk** | What breaks or ages badly in the next 6–12 months? | Low regret risk · Some aging risk · High regret risk |
+| **Risk** | What breaks or ages badly in the next 6–12 months? | Low regret risk · Young product risk / Thin ops trail / Young domain · thin ops trail / Some aging risk · High regret risk |
 
 An axis reads **not assessed** (`rating: unknown`) when no capability that covers it ran. Peer comparison ("above or below the bar for this kind of product") is listed under *not checked* until reference cohorts exist.
 
 Computed by `capybari-core` (`engine/verdict.go`, `engine/impact.go`). Changing these rules is a methodology change.
+
+On websites, a good Finish reads **Looks shipped (public pages only)**: only public pages were read.
+
+## Be blunt, stay accurate
+
+The verdict and everything shared from it are written to stop a scroll, but never go beyond the evidence. They attack the *evidence gap* ("email in Indraft's name can be faked", "domain only about 3 months old", "no public ops trail") and never claim "scam" or "AI wrote this".
+
+- **Summary** speaks to buyers first, then owners: *"indraft.pub: buyer concern: email in Indraft's name can be faked; domain only about 3 months old. Owner homework: 4 header and configuration gap(s)."* A blocker makes it *"purchase blocker: …"*.
+- **Order everywhere** (findings list, top findings, verdict reasons, share hook): blockers, then support cost, then owner homework (cosmetic, listed last under its own heading and never among top findings). Within each, a fixed **fear order** puts the sharpest categories first: insecure credentials, no HTTPS/TLS, leaked secrets and exposures, coming-soon shells and missing legal pages; then spoofable email, placeholders, vulnerable components, dead buttons and broken links, domain age, no ops trail, no contact; softer notes (name mismatch, docs, purchase path, stale sitemap, refunds) last. Defined in `engine/impact.go` (`FearRank`).
+- **Share formula**: one sharp fear (large), one earned proof, one limit, e.g. *"Email in Indraft's name can be faked"* · ✓ Distributed through App Store, Google Play · ⚠ Domain only about 3 months old · Public pages only.
+- **Score caveats**: a score never appears bare when its evidence is thin. Technology Currency on a website with fewer than 3 confidently identified technologies reads *"Limited fingerprint"* (low confidence); Looks Shipped always says *"Based on N public page(s) only"*; Unfinished Risk with no AI-generation signs says *"No AI-slop signs found; the points come from …"*; any other score of 90+ at low confidence is stamped *"Low confidence: limited evidence"*.
 
 ## Buyer impact
 
@@ -33,7 +44,7 @@ Analyzers may set the impact themselves (`capybari-analyzer-commerce` does). Oth
 | vulnerable-library (websites) | critical | low |
 | cookie | — | medium |
 | end-of-life, deprecated-library, maintenance-signal, missing-tests, missing-ci, missing-license, placeholder-content | — | low |
-| unmaintained-dependency, deprecated-package, inactive-repository, single-maintainer, stale-content, linked-repo-inactive, linked-repo-archived, missing-docs | — | low |
+| unmaintained-dependency, deprecated-package, inactive-repository, single-maintainer, stale-content, no-ops-trail, linked-repo-inactive, linked-repo-archived, missing-docs, purchase-path-unverified | — | low |
 | broken-link, dead-cta, domain-new, domain-expiring, email-spoofable, brand-mismatch | — | low |
 | license-restriction | set by `longevity`: non-commercial blocks; source-available, AGPL, GPL raise support cost | |
 | runtime, missing-lockfile, swallowed-errors, scaffold-code, placeholder-config, template-leftover, ai-boilerplate | — | medium |
@@ -73,8 +84,8 @@ Cosmetic findings never appear as reasons; they are counted.
 ### Risk
 
 - **poor** if any finding blocks purchase, or any support-cost finding is high or critical;
-- **fair** if any finding raises support cost;
-- otherwise **good**.
+- **fair** if any finding raises support cost, or the domain is under a year old (a *"Domain only N months old … no track record yet"* reason leads the list). The label names the cause: *Young product risk* (young domain), *Thin ops trail* (`no-ops-trail`), *Young domain · thin ops trail* (both), else *Some aging risk*;
+- otherwise **good**. A sitemap date alone is shown as *"Sitemap updated … (no dated pages found)"*: weak evidence that cannot make Risk green on its own for a product without an ops trail.
 - Positives: content updated within the last year (with its source), a linked repository pushed within 6 months; for repositories, commits in the last year, a bus factor of 2 or more, a release within the last year, a permissive license, tests and CI present; no end-of-life components.
 - Covered by: `web-tech`, `completeness` (websites); `longevity`, `tech-detect`, `dependencies`, `vulns`, `fingerprint`, `code-health` (repositories).
 
