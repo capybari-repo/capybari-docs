@@ -34,6 +34,7 @@ Analyzers may set the impact themselves (`capybari-analyzer-commerce` does). Oth
 | cookie | — | medium |
 | end-of-life, deprecated-library, maintenance-signal, missing-tests, missing-ci, missing-license, placeholder-content | — | low |
 | unmaintained-dependency, deprecated-package, inactive-repository, single-maintainer, stale-content, linked-repo-inactive, linked-repo-archived, missing-docs | — | low |
+| broken-link, dead-cta, domain-new, domain-expiring, email-spoofable, brand-mismatch | — | low |
 | license-restriction | set by `longevity`: non-commercial blocks; source-available, AGPL, GPL raise support cost | |
 | runtime, missing-lockfile, swallowed-errors, scaffold-code, placeholder-config, template-leftover, ai-boilerplate | — | medium |
 | hotspot, complexity, dependency-cycle | — | high |
@@ -46,8 +47,8 @@ Informational findings are always cosmetic.
 
 Each finding answers at most one question:
 
-- **Trust:** HTTPS/TLS, credentials and exposures, dependency and library vulnerabilities, cookies and headers, and the Trust & Commerce findings (insecure credentials, missing legal/contact/refund).
-- **Finish:** AI-generation and unfinished-code findings, coming-soon and stub pricing pages, no documentation for a site with accounts. Findings about AI *use* (builder, assistant config) answer none: using AI is not a concern.
+- **Trust:** HTTPS/TLS, credentials and exposures, dependency and library vulnerabilities, cookies and headers, the Trust & Commerce findings (insecure credentials, missing legal/contact/refund) and Domain & Identity (new or expiring domain, spoofable email, name not matching the domain).
+- **Finish:** AI-generation and unfinished-code findings, coming-soon and stub pricing pages, no documentation for a site with accounts, broken links and calls to action that lead nowhere. Findings about AI *use* (builder, assistant config) answer none: using AI is not a concern.
 - **Risk:** Technology Currency, Dependency Hygiene, Maintainability, Structure, Operability and Change Safety findings, including inactive repositories, single maintainers, restrictive licenses, deprecated or unmaintained dependencies, stale content and inactive linked repositories.
 
 Cosmetic findings never appear as reasons; they are counted.
@@ -57,7 +58,8 @@ Cosmetic findings never appear as reasons; they are counted.
 - **poor** if any finding blocks purchase; **fair** if any raises support cost;
 - otherwise **good**, labelled *Commerce-ready* when the site takes payments (a payment provider or checkout) and links both a privacy policy and terms, else *No trust blockers*.
 - Positives listed: HTTPS with a valid certificate, payment providers and stores, privacy/terms, refund policy, contact details; for repositories, no committed credentials and no vulnerable or unknown dependencies.
-- Covered by: `web-security`, `commerce` (websites); `secrets`, `vulns` (repositories).
+- More positives: a domain registered over a year ago; email protected by SPF and an enforcing DMARC policy.
+- Covered by: `web-security`, `commerce`, `identity` (websites); `secrets`, `vulns` (repositories).
 
 ### Finish
 
@@ -65,8 +67,8 @@ Cosmetic findings never appear as reasons; they are counted.
 - **fair** if a finding raises support cost, Unfinished Risk ≥ 20, or Looks Shipped < 65;
 - otherwise **good**.
 - Reasons list what is not yet in place from the Looks Shipped checklist, and name the score when it sets the level ("Looks Shipped 58/100").
-- Positives: documentation, changelog, status page and support community (from `completeness`).
-- Covered by: `ai-signals`, `commerce`, `completeness`.
+- Positives: documentation, changelog, status page and support community (from `completeness`); all links checked work (3 or more, none broken, no dead calls to action).
+- Covered by: `ai-signals`, `commerce`, `completeness`, `links`.
 
 ### Risk
 
@@ -79,6 +81,10 @@ Cosmetic findings never appear as reasons; they are counted.
 ## Not checked
 
 Always listed: what a website scan cannot see (code, tests, dependencies; pages behind a login; whether checkout completes), or for repositories the running product; capabilities that were skipped or failed; relevant capabilities that were not applicable (with their reason); and peer comparison.
+
+## Compare
+
+`/compare` in the web app runs the same buyer check on two targets and shows them side by side: the three answers with their top reasons, Unfinished Risk, Looks Shipped and the buyer-impact counts, plus a plain "where they differ" line per question. The page URL holds both scan IDs, so it can be shared.
 
 ## Outputs
 

@@ -17,6 +17,8 @@ Run `capybari capabilities` for the live list from your installed version.
 | `web-security` | Website Security Check | website | the scanned site only | Security | [capybari-analyzer-web-security](https://github.com/capybari-repo/capybari-analyzer-web-security) |
 | `commerce` | Trust & Commerce Readiness *(experimental)* | website | none | feeds the verdict (Trust, Finish) | [capybari-analyzer-commerce](https://github.com/capybari-repo/capybari-analyzer-commerce) |
 | `completeness` | Product Completeness *(experimental)* | website | optional: the site's own `/sitemap.xml`; `api.github.com` (public repository names linked from the site) | feeds the verdict (Finish, Risk) | [capybari-analyzer-completeness](https://github.com/capybari-repo/capybari-analyzer-completeness) |
+| `identity` | Domain & Identity *(experimental)* | website | optional: `data.iana.org` + the registry's RDAP server (domain name only); DNS TXT lookups | feeds the verdict (Trust) | [capybari-analyzer-identity](https://github.com/capybari-repo/capybari-analyzer-identity) |
+| `links` | Links & Calls to Action *(experimental)* | website | none (uses the Website Snapshot's link checks) | feeds the verdict (Finish) | [capybari-analyzer-links](https://github.com/capybari-repo/capybari-analyzer-links) |
 | `longevity` | Maintenance & Longevity *(experimental)* | repository | none | Operability; feeds the verdict (Risk) | [capybari-analyzer-longevity](https://github.com/capybari-repo/capybari-analyzer-longevity) |
 | `ai-signals` | AI-Generation Signals *(experimental)* | website, repository | none | feeds Unfinished Risk and Looks Shipped | [capybari-analyzer-ai-signals](https://github.com/capybari-repo/capybari-analyzer-ai-signals) |
 
