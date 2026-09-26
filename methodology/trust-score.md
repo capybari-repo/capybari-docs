@@ -56,6 +56,8 @@ Findings are listed once per line; several findings of the same kind become one 
 | | cookie flags, SRI, information disclosure | 1–3 each |
 | **Identity & track record** | domain < 30 days · < 3 months · < 6 months · < 1 year | 20 · 15 · 12 · 6 |
 | | name does not match the domain | 6 |
+| | App Store app with almost no ratings (< 5) | 4 |
+| | different names in the page title and link previews | 3 |
 | | domain expires within 30 days | 5 |
 | **AI & unfinished work** | placeholder content live | 15 |
 | | stock AI copy, template or generator leftovers, scaffolding, swallowed errors, placeholder configuration | 15 high · 10 · 6 · 3 by severity, each |
@@ -68,7 +70,8 @@ Findings are listed once per line; several findings of the same kind become one 
 | **Maintenance & longevity** | end-of-life or deprecated components | 3–10 each |
 | | repository inactive 1–2 years · 2+ years | 8 · 15 |
 | | license restrictions: non-commercial · AGPL/source-available · GPL | 20 · 8 · 4 |
-| | no tests · no CI · no license · single maintainer · stale content | 8 · 4 · 4 · 5 · 4–8 |
+| | no tests · no CI (× 1.5 in a shipped application: web, mobile or desktop app, or containerised service) · no license · single maintainer · stale content | 8 · 4 · 4 · 5 · 4–8 |
+| | linked App Store app not updated for 1 · 2+ years | 3 · 6 |
 | | unmaintained or deprecated dependencies, unpinned dependencies | 1–6 |
 | | code-health issues | √(number of issues): they grow with codebase size |
 | **Evidence coverage** | too little content to assess (websites · repositories) | 15 · 8 |
