@@ -60,7 +60,8 @@ Findings are listed once per line; several findings of the same kind become one 
 | | App Store app with almost no ratings (< 5) | 4 |
 | | different names in the page title and link previews | 3 |
 | | domain expires within 30 days | 5 |
-| **AI & unfinished work** | placeholder content live | 15 |
+| **AI & unfinished work** | placeholder content live (lorem ipsum, "Your Company Name", example@example.com, 555 numbers) | 15 |
+| | demo names (Acme Inc, John Doe): often deliberate in product mockups, so a weak signal and never a ceiling | 3 |
 | | stock AI copy, template or generator leftovers, scaffolding, swallowed errors, placeholder configuration | 15 high · 10 · 6 · 3 by severity, each |
 | **Completeness & operations** | coming-soon shell | 15 |
 | | takes payments without terms/privacy; accounts without privacy | 10; 6 |
@@ -96,6 +97,10 @@ Findings that describe AI *use* (a site builder, an assistant configuration) cos
 | dackapps.com · news.livegrid.live | 64 · 65, C |
 | left-pad | 40 · D, held by 90 months without a commit |
 | expressjs/express | 86 · A |
+
+## Scores withheld for lack of evidence
+
+A score is never shown for something that could not be judged. A website's **Technology Currency** is withheld when none of the technologies identified shows a version (for example Cloudflare and Next.js identified from headers only): a 100 would only mean "nothing could be checked". The report says so instead ("Not scored: Cloudflare and Next.js were identified, but no version is visible, so we cannot tell whether they are up to date"). Scores based on only a few versioned technologies carry a caveat.
 
 ## Relation to other scores
 
