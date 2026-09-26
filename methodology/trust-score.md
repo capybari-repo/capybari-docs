@@ -8,6 +8,7 @@ Trust Score = min( 100 − every deduction added up , the lowest ceiling hit )
 
 - **Deductions add up, with no cap per area.** Every deficiency found costs points, whatever else is fine: missing configuration, a young domain, unreviewed AI output, missing legal or operational pages, ageing components, and too little evidence to judge.
 - **Critical conditions are ceilings.** Some things cannot be outweighed. A domain registered ten days ago has no track record, and no amount of good configuration gives it one, so it can never score above 10. The lowest ceiling hit applies, and the report says so ("Held at 50: domain only 3 months old").
+- **Visitors see deductions as "Negative impacts"** and ceilings as "Held at N: …"; each check's result reads "N problems found" (or "collected evidence" for the Website Snapshot and inventory, which gather data for the others).
 - **Every point is itemised.** The receipt lists each deduction with its points, area and a link to the evidence.
 
 Computed by `capybari-core` (`engine/trustscore.go`). Changing any number here is a methodology change.
